@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabah Brifing — Berker</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #0f172a; color: #e2e8f0; min-height: 100vh; }
+
+  header {
+    padding: 20px 16px 16px;
+    background: linear-gradient(135deg, #1e293b, #0f172a);
+    border-bottom: 1px solid #1e293b;
+  }
+  .header-top { display: flex; justify-content: space-between; align-items: center; }
+  .header-title { font-size: 18px; font-weight: 700; color: #f1f5f9; }
+  .header-date { font-size: 11px; color: #64748b; margin-top: 4px; }
+  .header-badge { background: #10b981; color: white; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 20px; }
+
+  .summary-row {
+    display: flex; gap: 8px; padding: 12px 16px;
+    overflow-x: auto; scrollbar-width: none;
+    background: #1e293b; border-bottom: 1px solid #334155;
+  }
+  .summary-row::-webkit-scrollbar { display: none; }
+  .sum-card {
+    flex-shrink: 0; background: #0f172a; border-radius: 10px;
+    padding: 10px 14px; text-align: center; min-width: 78px; border: 1px solid #334155;
+  }
+  .sum-card .n { font-size: 22px; font-weight: 700; }
+  .sum-card .l { font-size: 10px; color: #64748b; margin-top: 2px; white-space: nowrap; }
+
+  .section { border-bottom: 1px solid #1e293b; }
+  .section-head {
+    padding: 14px 16px 10px; display: flex; align-items: center; gap: 8px;
+    background: #1e293b; position: sticky; top: 0; z-index: 10;
+  }
+  .section-head h2 { font-size: 12px; font-weight: 700; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.06em; }
+  .section-head .cnt { font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-left: auto; }
+  .cnt-jobs    { background: #059669; color: white; }
+  .cnt-action  { background: #dc2626; color: white; }
+  .cnt-profile { background: #2563eb; color: white; }
+  .cnt-reject  { background: #6b7280; color: white; }
+  .cnt-new     { background: #f59e0b; color: #0f172a; }
+
+  .item {
+    padding: 14px 16px; border-bottom: 1px solid #1e293b;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .item:last-child { border-bottom: none; }
+  .item-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
+  .item-title { font-size: 14px; font-weight: 700; color: #f1f5f9; line-height: 1.35; flex: 1; }
+  .item-date { font-size: 10px; color: #475569; white-space: nowrap; margin-top: 2px; }
+  .item-sub { font-size: 12px; color: #64748b; }
+  .item-body {
+    font-size: 13px; color: #cbd5e1; line-height: 1.55;
+    background: #1e293b; padding: 10px 12px; border-radius: 8px; border-left: 3px solid #334155;
+  }
+
+  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
+  .tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
+  .tag-action  { background: #dc2626; color: white; }
+  .tag-inmail  { background: #7c3aed; color: white; }
+  .tag-reject  { background: #374151; color: #9ca3af; }
+  .tag-profile { background: #1d4ed8; color: white; }
+  .tag-job     { background: #065f46; color: #a7f3d0; }
+  .tag-new     { background: #f59e0b; color: #0f172a; font-weight: 800; }
+  .tag-recruiter { background: #92400e; color: #fde68a; }
+  .tag-star    { background: #1e293b; color: #fbbf24; border: 1px solid #fbbf24; }
+
+  .btn-link {
+    display: inline-block; background: #0a66c2; color: white;
+    padding: 7px 14px; border-radius: 8px; text-decoration: none;
+    font-size: 12px; font-weight: 600; margin-top: 2px; align-self: flex-start;
+  }
+
+  .footer { padding: 20px 16px; font-size: 11px; color: #475569; text-align: center; border-top: 1px solid #1e293b; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-top">
+    <div class="header-title">☀️ Sabah Brifing</div>
+    <div class="header-badge">GÜNCEL</div>
+  </div>
+  <div class="header-date">2 Haziran 2026 · Berker Berberoğlu · Tüm mailler tarandı</div>
+</header>
+
+<div class="summary-row">
+  <div class="sum-card"><div class="n" style="color:#ef4444">4</div><div class="l">Aksiyon</div></div>
+  <div class="sum-card"><div class="n" style="color:#3b82f6">3</div><div class="l">Profil Görüntüleme</div></div>
+  <div class="sum-card"><div class="n" style="color:#6b7280">2</div><div class="l">Red / Sonuç</div></div>
+  <div class="sum-card"><div class="n" style="color:#10b981">33</div><div class="l">İlan Dashboard</div></div>
+</div>
+
+<!-- ========== İŞ İLANLARI ========== -->
+<div class="section">
+  <div class="section-head">
+    <span>💼</span><h2>İş İlanları Dashboard</h2>
+    <span class="cnt cnt-jobs">33</span>
+  </div>
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">33 ilan — Dashboard'u aç</div>
+      <div class="item-date">2 Haz</div>
+    </div>
+    <div class="tags">
+      <span class="tag tag-job">📩 17 Başvuru Önerisi</span>
+      <span class="tag tag-job">🔔 16 İş Alarmı</span>
+    </div>
+    <div class="item-body">
+      <strong>Öne çıkanlar:</strong> Pernod Ricard Portfolio & Marketing Intelligence Manager, Google Product Marketing Manager, bitaksi Director of Growth, QNB Dijital Deneyim Yönetmeni, Embla Medical Digital Marketing
+    </div>
+    <a class="btn-link" href="LinkedIn_Onerileri_Dashboard.html" target="_blank">Dashboard'u Aç →</a>
+  </div>
+</div>
+
+<!-- ========== AKSİYON GEREKTİREN ========== -->
+<div class="section">
+  <div class="section-head">
+    <span>🎯</span><h2>Aksiyon Gerektiren</h2>
+    <span class="cnt cnt-action">4</span>
+  </div>
+  <!-- Red Bull #1 - BUGÜN -->
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">🔴 Red Bull — Wingfinder Testi (Gaming & Esports Marketing Specialist)</div>
+      <div class="item-date">Bugün 12:10</div>
+    </div>
+    <div class="item-sub">wingfinder@career.redbull.com</div>
+    <div class="tags">
+      <span class="tag tag-action">⚡ ACİL — 4 GÜN KALDI</span>
+      <span class="tag" style="background:#c8102e;color:white">🎯 Yetenek Testi</span>
+    </div>
+    <div class="item-body">
+      Red Bull, <strong>Gaming and Esports Marketing Specialist</strong> başvurunuz için <strong>Wingfinder</strong> kişilik & güç testini tamamlamanızı istiyor.<br><br>
+      ⏱ <strong>Süre:</strong> ~35 dakika &nbsp;|&nbsp; 🗓 <strong>Son tarih: 6 Haziran 2026</strong><br>
+      📊 Test 4 alanda ölçüm yapıyor: Connections, Creativity, Drive, Thinking<br>
+      Tamamlayınca kişisel rapor + koçluk planı geliyor. Sonuçlar otomatik başvurunuza ekleniyor.
+    </div>
+    <a class="btn-link" href="https://www.wingfinder.com/invite/GqknFGrKLdtJLyk5BIzkr1YGL8xiTSz8cWbZINoIbu03W_Ct8-rCS8Ob3OtEe67B" target="_blank">Wingfinder Testini Başlat →</a>
+  </div>
+
+  <!-- Red Bull #2 - 31 Mayıs, okunmamış -->
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">🔴 Red Bull — Wingfinder Testi (Strategic Partnership Manager)</div>
+      <div class="item-date">31 May · 📭 Okunmamış</div>
+    </div>
+    <div class="item-sub">wingfinder@career.redbull.com</div>
+    <div class="tags">
+      <span class="tag tag-action">⚡ ACİL — SÜRE DOLUYOR</span>
+      <span class="tag" style="background:#c8102e;color:white">🎯 Yetenek Testi</span>
+    </div>
+    <div class="item-body">
+      Red Bull, <strong>Strategic Partnership Manager</strong> başvurunuz için de ayrı bir Wingfinder daveti göndermiş. 31 Mayıs'ta geldi, hâlâ okunmamış.<br><br>
+      ⏱ <strong>Süre:</strong> ~35 dakika &nbsp;|&nbsp; 🗓 <strong>Son tarih: 4 Haziran 2026 (BUGÜN dolabilir!)</strong>
+    </div>
+    <a class="btn-link" href="https://www.wingfinder.com/invite/P_uFNRFuc2P6jCrNPVm84DS-mZ9nkp56d2hmAF9NZCR14vFJnbv0hIXauAhZLMKf" target="_blank">Wingfinder Testini Başlat →</a>
+  </div>
+
+  <!-- Zorlu Holding -->
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">Zorlu Holding — LinkedIn InMail</div>
+      <div class="item-date">12 Mar 2026</div>
+    </div>
+    <div class="item-sub">Zeynep Zaim · HR Specialist @Zorlu Holding</div>
+    <div class="tags">
+      <span class="tag tag-action">⚡ YANIT BEKLİYOR</span>
+      <span class="tag tag-inmail">💬 InMail</span>
+    </div>
+    <div class="item-body">
+      "Zorlu PSM bünyesinde İş Geliştirme (Satış) pozisyonu için ekibimize yeni bir çalışma arkadaşı arıyoruz. LinkedIn profilinizi incelediğimizde deneyimlerinizin aradığımız niteliklerle oldukça örtüştüğünü gördüm..."
+    </div>
+    <a class="btn-link" href="https://www.linkedin.com/messaging/" target="_blank">LinkedIn'de Yanıtla →</a>
+  </div>
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">Micro1 — AI Data Reviewer ($25–40/saat Remote)</div>
+      <div class="item-date">21 May 2026</div>
+    </div>
+    <div class="item-sub">Crossing Hurdles · notifications@ceipalmail.com</div>
+    <div class="tags">
+      <span class="tag tag-recruiter">📩 Recruiter</span>
+      <span class="tag tag-star">⭐ Yıldızlı</span>
+    </div>
+    <div class="item-body">
+      <strong>Şirket:</strong> Micro1 · <strong>Tür:</strong> Contract · <strong>Ücret:</strong> $25–40/saat · Uzaktan<br>
+      AI modellerini eğitmek için domain uzmanlığı arıyorlar. Süreç: CV değerlendirme + mülakat.
+    </div>
+  </div>
+</div>
+
+<!-- ========== PROFİL AKTİVİTESİ ========== -->
+<div class="section">
+  <div class="section-head">
+    <span>👁️</span><h2>Profil Görüntülenme</h2>
+    <span class="cnt cnt-profile">3</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div class="item-title">59 kişi profilinizi gördü</div><div class="item-date">30 May</div></div>
+    <div class="tags"><span class="tag tag-profile">📊 LinkedIn</span></div>
+    <div class="item-body">Son hafta 59 görüntüleme. Aktif başvuru süreciniz profil trafiğini artırıyor.</div>
+  </div>
+  <div class="item">
+    <div class="item-header"><div class="item-title">61 kişi profilinizi görüntüledi</div><div class="item-date">27 May</div></div>
+    <div class="tags"><span class="tag tag-profile">📊 LinkedIn</span></div>
+  </div>
+  <div class="item">
+    <div class="item-header"><div class="item-title">69 yeni profil görüntülemesi</div><div class="item-date">6 May</div></div>
+    <div class="tags"><span class="tag tag-profile">📊 LinkedIn</span></div>
+    <div class="item-body">Bu dönemin en yüksek haftalık trafiği.</div>
+  </div>
+</div>
+
+<!-- ========== RED / MÜLAKAT SONUÇLARI ========== -->
+<div class="section">
+  <div class="section-head">
+    <span>📋</span><h2>Red & Mülakat Sonuçları</h2>
+    <span class="cnt cnt-reject">2</span>
+  </div>
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">Sigortam.net — Senior Growth Hacker</div>
+      <div class="item-date">24 May 2026</div>
+    </div>
+    <div class="item-sub">ilab@correos.peoplebox.biz · People & Culture Team</div>
+    <div class="tags"><span class="tag tag-reject">❌ Red</span></div>
+    <div class="item-body">
+      "Başvurunu ve görüşme sürecimizi dikkatlice değerlendirdikten sonra, bu aşamada farklı bir adayla ilerlemeye karar verdiğimizi üzülerek bildirmek isteriz. Bu kararın, senin değerli deneyimlerini ve yetkinliklerini yansıtmadığına inanıyoruz..."
+    </div>
+  </div>
+  <div class="item">
+    <div class="item-header">
+      <div class="item-title">ING Türkiye — Mülakat Sonucu</div>
+      <div class="item-date">4 May 2026</div>
+    </div>
+    <div class="item-sub">Insan.Kaynaklari@ing.com.tr</div>
+    <div class="tags"><span class="tag tag-reject">📩 Resmi Mail</span></div>
+    <div class="item-body">
+      ING Türkiye İnsan Kaynakları'ndan resmi mülakat sonuç maili geldi. Mail içeriği görsel olarak gönderilmiş — detaylar için mailinizi açın.
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  Sabah "dashboard güncelle" yazarak yenileyebilirsiniz.<br>
+  2 Haziran 2026 · bberberoglu@sabanciuniv.edu
+</div>
+
+</body>
+</html>
