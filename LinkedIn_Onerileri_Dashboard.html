@@ -3,396 +3,420 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LinkedIn Dashboard — Berker</title>
+<title>İş İlanları Dashboard — Berker</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: #f1f5f9; color: #1e293b; }
-
-  header {
-    background: linear-gradient(135deg, #0a66c2, #004182);
-    color: white;
-    padding: 18px 16px 14px;
-    position: sticky; top: 0; z-index: 100;
-  }
-  header h1 { font-size: 16px; font-weight: 700; }
-  header p { font-size: 11px; opacity: 0.75; margin-top: 2px; }
-
-  .stats-bar {
-    display: flex;
-    gap: 8px;
-    padding: 12px 16px;
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .stats-bar::-webkit-scrollbar { display: none; }
-  .stat {
-    background: #eff6ff;
-    border: 1px solid #bfdbfe;
-    border-radius: 10px;
-    padding: 8px 14px;
-    text-align: center;
-    min-width: 78px;
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: all 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .stat:active { transform: scale(0.96); }
-  .stat.active-stat { background: #0a66c2; border-color: #0a66c2; }
-  .stat.active-stat .num, .stat.active-stat .lbl { color: white; }
-  .stat .num { font-size: 20px; font-weight: 700; color: #0a66c2; }
-  .stat .lbl { font-size: 10px; color: #64748b; margin-top: 1px; white-space: nowrap; }
-
-  .search-bar {
-    padding: 10px 16px;
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
-  }
-  .search-input {
-    width: 100%;
-    padding: 10px 14px 10px 36px;
-    border-radius: 10px;
-    border: 1px solid #cbd5e1;
-    font-size: 14px;
-    background: #f8fafc url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E") no-repeat 12px center;
-    color: #1e293b;
-  }
-  .search-input:focus { outline: none; border-color: #0a66c2; background-color: white; }
-  .search-input::placeholder { color: #94a3b8; }
-
-  .toolbar {
-    padding: 10px 16px;
-    background: white;
-    border-bottom: 1px solid #e2e8f0;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-  }
-  .filter-row {
-    display: flex;
-    gap: 6px;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-    padding-bottom: 2px;
-  }
-  .filter-row::-webkit-scrollbar { display: none; }
-  .filter-row label { font-size: 11px; color: #94a3b8; white-space: nowrap; align-self: center; flex-shrink: 0; }
-  .btn {
-    padding: 6px 12px;
-    border-radius: 20px;
-    border: 1px solid #cbd5e1;
-    background: white;
-    font-size: 12px;
-    cursor: pointer;
-    white-space: nowrap;
-    flex-shrink: 0;
-    transition: all 0.15s;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn:active { transform: scale(0.96); }
-  .btn.active { background: #0a66c2; color: white; border-color: #0a66c2; font-weight: 600; }
-  .btn.sort-active { background: #7c3aed; color: white; border-color: #7c3aed; font-weight: 600; }
-
-  .result-info {
-    padding: 8px 16px;
-    font-size: 12px;
-    color: #64748b;
-    background: #f8fafc;
-    border-bottom: 1px solid #e2e8f0;
-  }
-
-  .list { display: flex; flex-direction: column; }
-
-  .card {
-    background: white;
-    border-left: 4px solid #e2e8f0;
-    padding: 14px 16px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    border-bottom: 1px solid #f1f5f9;
-  }
-  .card[data-status="başvuruldu"] { border-left-color: #10b981; }
-  .card[data-status="incelenecek"] { border-left-color: #f59e0b; }
-  .card[data-status="ilgisiz"] { border-left-color: #94a3b8; opacity: 0.5; }
-
+  body { background: #0f172a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; min-height: 100vh; }
+  .header { text-align: center; padding: 18px 0 10px; }
+  .header h1 { font-size: 20px; font-weight: 700; color: #f8fafc; }
+  .badge { display: inline-block; background: #22c55e; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; text-transform: uppercase; }
+  .date { color: #64748b; font-size: 11px; margin-top: 3px; }
+  .back-link { display: inline-flex; align-items: center; gap: 6px; background: #1e293b; color: #94a3b8; font-size: 12px; padding: 6px 12px; border-radius: 8px; text-decoration: none; margin-bottom: 12px; }
+  .tabs { display: flex; gap: 6px; margin-bottom: 12px; overflow-x: auto; scrollbar-width: none; }
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { background: #1e293b; border: none; color: #94a3b8; font-size: 12px; font-weight: 600; padding: 9px 14px; border-radius: 9px; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  .tab.active { background: #3b82f6; color: #fff; }
+  .tab .count { display: inline-block; background: rgba(255,255,255,0.2); border-radius: 99px; font-size: 10px; padding: 1px 5px; margin-left: 3px; }
+  .tab:not(.active) .count { background: #0f172a; }
+  .controls { display: flex; gap: 8px; margin-bottom: 10px; flex-wrap: wrap; }
+  .search-wrap { flex: 1; min-width: 160px; position: relative; }
+  .search-wrap input { width: 100%; background: #1e293b; border: 1px solid #334155; color: #e2e8f0; font-size: 12px; padding: 8px 12px 8px 30px; border-radius: 8px; outline: none; }
+  .search-wrap::before { content: '🔍'; position: absolute; left: 9px; top: 50%; transform: translateY(-50%); font-size: 11px; }
+  select { background: #1e293b; border: 1px solid #334155; color: #e2e8f0; font-size: 11px; padding: 7px 9px; border-radius: 8px; outline: none; cursor: pointer; }
+  .sort-btn { background: #1e293b; border: 1px solid #334155; color: #94a3b8; font-size: 11px; padding: 7px 9px; border-radius: 8px; cursor: pointer; }
+  .cards { display: flex; flex-direction: column; gap: 7px; }
+  .card { background: #1e293b; border-radius: 11px; padding: 13px; border-left: 3px solid transparent; }
+  .card.cat-big { border-left-color: #3b82f6; }
+  .card.cat-mid { border-left-color: #8b5cf6; }
+  .card.cat-startup { border-left-color: #f59e0b; }
+  .card.cat-remote { border-left-color: #22c55e; }
+  .card.cat-warn { border-left-color: #ef4444; }
   .card-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 8px; }
-  .card-title { font-size: 14px; font-weight: 700; color: #0f172a; line-height: 1.35; flex: 1; }
-  .card-date { font-size: 10px; color: #94a3b8; white-space: nowrap; margin-top: 2px; }
-  .card-company { font-size: 13px; color: #0a66c2; font-weight: 600; }
-  .card-loc { font-size: 11px; color: #94a3b8; margin-top: 1px; }
-
-  .tags { display: flex; gap: 5px; flex-wrap: wrap; }
-  .tag { font-size: 10px; padding: 2px 8px; border-radius: 8px; font-weight: 600; }
-  .tag-hybrid { background: #ecfdf5; color: #059669; border: 1px solid #a7f3d0; }
-  .tag-ofiste { background: #fff7ed; color: #d97706; border: 1px solid #fed7aa; }
-  .tag-uzaktan { background: #eff6ff; color: #3b82f6; border: 1px solid #bfdbfe; }
-  .tag-app { background: #f0fdf4; color: #16a34a; border: 1px solid #bbf7d0; }
-  .tag-alert { background: #fffbeb; color: #b45309; border: 1px solid #fde68a; }
-
-  .card-bottom { display: flex; gap: 8px; align-items: center; }
-  .status-select {
-    flex: 1;
-    padding: 7px 10px;
-    border-radius: 8px;
-    border: 1px solid #cbd5e1;
-    font-size: 13px;
-    background: #f8fafc;
-    color: #374151;
-    cursor: pointer;
-  }
-  .status-select:focus { outline: none; border-color: #0a66c2; }
-
-  .btn-view {
-    display: flex; align-items: center; justify-content: center;
-    background: #0a66c2; color: white;
-    padding: 7px 14px;
-    border-radius: 8px; text-decoration: none;
-    font-size: 12px; font-weight: 600;
-    white-space: nowrap;
-    -webkit-tap-highlight-color: transparent;
-  }
-  .btn-view:active { background: #004182; }
-
-  .empty-state {
-    text-align: center;
-    padding: 48px 24px;
-    color: #94a3b8;
-    font-size: 14px;
-  }
-  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .card-company { font-size: 10px; color: #64748b; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+  .card-title { font-size: 13px; font-weight: 600; color: #f1f5f9; margin-top: 2px; }
+  .card-meta { font-size: 10px; color: #94a3b8; margin-top: 3px; }
+  .card-note { font-size: 11px; color: #94a3b8; margin-top: 5px; line-height: 1.5; }
+  .card-tags { margin-top: 5px; display: flex; flex-wrap: wrap; gap: 3px; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 99px; }
+  .tag.big { background: #3b82f620; color: #60a5fa; }
+  .tag.mid { background: #8b5cf620; color: #a78bfa; }
+  .tag.startup { background: #f59e0b20; color: #fbbf24; }
+  .tag.remote { background: #22c55e20; color: #4ade80; }
+  .tag.warn { background: #ef444420; color: #f87171; }
+  .tag.alarm { background: #0ea5e920; color: #38bdf8; }
+  .tag.apply { background: #10b98120; color: #34d399; }
+  .tag.viewed { background: #6366f120; color: #818cf8; }
+  .tag.interview { background: #fbbf2420; color: #fcd34d; font-weight:800; }
+  .tag.script { background: #7c3aed20; color: #c4b5fd; }
+  .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
+  .status-select { background: #0f172a; border: 1px solid #334155; color: #94a3b8; font-size: 10px; padding: 4px 7px; border-radius: 5px; cursor: pointer; outline: none; }
+  .status-select.status-incelenecek { border-color: #f59e0b; color: #f59e0b; }
+  .status-select.status-basvuruldu { border-color: #22c55e; color: #22c55e; }
+  .status-select.status-ilgisiz { border-color: #ef4444; color: #ef4444; }
+  .view-btn { font-size: 11px; color: #60a5fa; text-decoration: none; font-weight: 600; }
+  .fit { font-size: 12px; }
+  .empty { text-align: center; color: #475569; padding: 40px 0; font-size: 13px; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>LinkedIn İş İlanları — Berker</h1>
-  <p>Başvuru önerileri + İş alarmları · 2 Haziran 2026</p>
-</header>
-
-<!-- Durum sekmeleri (tıklanabilir istatistik) -->
-<div class="stats-bar">
-  <div class="stat active-stat" onclick="setStatus('active')" id="stat-tab-active">
-    <div class="num" id="num-active">33</div>
-    <div class="lbl">Aktif</div>
-  </div>
-  <div class="stat" onclick="setStatus('incelenecek')" id="stat-tab-incelenecek">
-    <div class="num" id="num-incelenecek">0</div>
-    <div class="lbl">İncelenecek</div>
-  </div>
-  <div class="stat" onclick="setStatus('başvuruldu')" id="stat-tab-başvuruldu">
-    <div class="num" id="num-başvuruldu">0</div>
-    <div class="lbl">Başvuruldu</div>
-  </div>
-  <div class="stat" onclick="setStatus('ilgisiz')" id="stat-tab-ilgisiz">
-    <div class="num" id="num-ilgisiz">0</div>
-    <div class="lbl">İlgisiz</div>
-  </div>
+<div class="header">
+  <h1>İş İlanları <span class="badge">Güncel</span></h1>
+  <div class="date">5 Haziran 2026 · Gmail + LinkedIn alarmlarından derlendi</div>
 </div>
 
-<!-- Arama -->
-<div class="search-bar">
-  <input class="search-input" id="search-input" type="text" placeholder="Pozisyon veya şirket ara…" oninput="renderAll()">
+<a class="back-link" href="Sabah_Brifing.html">← Sabah Brifing</a>
+
+<div class="tabs" id="tabs">
+  <button class="tab active" onclick="switchTab('aktif',this)">Aktif <span class="count" id="cnt-aktif">0</span></button>
+  <button class="tab" onclick="switchTab('incelenecek',this)">İncelenecek <span class="count" id="cnt-incelenecek">0</span></button>
+  <button class="tab" onclick="switchTab('basvuruldu',this)">Başvuruldu <span class="count" id="cnt-basvuruldu">0</span></button>
+  <button class="tab" onclick="switchTab('ilgisiz',this)">İlgisiz <span class="count" id="cnt-ilgisiz">0</span></button>
 </div>
 
-<!-- Ek filtreler -->
-<div class="toolbar">
-  <div class="filter-row">
-    <label>Kaynak:</label>
-    <button class="btn active" onclick="setFilter('source','all',this)">Tümü</button>
-    <button class="btn" onclick="setFilter('source','application',this)">📩 Başvuru</button>
-    <button class="btn" onclick="setFilter('source','alert',this)">🔔 Alarm</button>
-    <label style="margin-left:4px">Tür:</label>
-    <button class="btn active" onclick="setFilter('wt','all',this)">Tümü</button>
-    <button class="btn" onclick="setFilter('wt','Hybrid',this)">Hybrid</button>
-    <button class="btn" onclick="setFilter('wt','Ofiste',this)">Ofiste</button>
-    <button class="btn" onclick="setFilter('wt','Uzaktan',this)">Uzaktan</button>
+<div class="controls">
+  <div class="search-wrap">
+    <input type="text" id="searchInput" placeholder="Şirket veya pozisyon ara..." oninput="renderCards()">
   </div>
-  <div class="filter-row">
-    <label>Sırala:</label>
-    <button class="btn sort-active" id="btn-sort-new" onclick="setSort('new')">↓ Yeniden Eskiye</button>
-    <button class="btn" id="btn-sort-old" onclick="setSort('old')">↑ Eskiden Yeniye</button>
-  </div>
+  <select id="workFilter" onchange="renderCards()">
+    <option value="">Tüm Çalışma Şekilleri</option>
+    <option value="Hibrit">Hibrit</option>
+    <option value="Ofiste">Ofiste</option>
+    <option value="Uzaktan">Uzaktan</option>
+  </select>
+  <button class="sort-btn" onclick="toggleSort()">⇅ <span id="sortLabel">Yeniden Eskiye</span></button>
 </div>
 
-<div class="result-info" id="result-info">33 ilan gösteriliyor</div>
-<div class="list" id="jobs-list"></div>
+<div class="cards" id="cardContainer"></div>
 
 <script>
+// Her ilanın benzersiz ID'si var — hiç duplicate yok
 const JOBS = [
-  {job_id:"4422309663",title:"Pazarlama & Kurumsal İletişim Uzmanı",company:"MUDO",location:"Ataşehir, İstanbul",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4422309663/",source:"Toyota Türkiye",date:"2026-06-02",type:"application"},
-  {job_id:"4418394625",title:"Trade Marketing Executive",company:"Laboratoires Expanscience",location:"İstanbul",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4418394625/",source:"Toyota Türkiye",date:"2026-06-02",type:"application"},
-  {job_id:"4419085782",title:"Marketing Campaigns Executive",company:"Yemeksepeti",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4419085782/",source:"Toyota Türkiye",date:"2026-06-02",type:"application"},
-  {job_id:"4412789281",title:"Product Manager",company:"Kaizen Loyalty",location:"Greater Istanbul",work_type:"Uzaktan",url:"https://www.linkedin.com/jobs/view/4412789281/",source:"Yıldız Tech",date:"2026-06-01",type:"application"},
-  {job_id:"4393573090",title:"Product Manager",company:"kitUP",location:"İstanbul",work_type:"Uzaktan",url:"https://www.linkedin.com/jobs/view/4393573090/",source:"Gurmen Group",date:"2026-06-01",type:"application"},
-  {job_id:"4413064518",title:"Customer Success Manager",company:"Denebunu",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4413064518/",source:"Bupa Acıbadem",date:"2026-06-01",type:"application"},
-  {job_id:"4414042550",title:"Customer Success Manager",company:"Social Discovery Group",location:"Türkiye",work_type:"Uzaktan",url:"https://www.linkedin.com/jobs/view/4414042550/",source:"Bupa Acıbadem",date:"2026-06-01",type:"application"},
-  {job_id:"4423251542",title:"Creative Sales Specialist (EN/TR)",company:"Google",location:"Greater Istanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4423251542/",source:"Şanstech",date:"2026-06-01",type:"application"},
-  {job_id:"4422885844",title:"Mobile Growth Specialist",company:"360 Company LLC",location:"İstanbul",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4422885844/",source:"Lucida AI",date:"2026-06-01",type:"application"},
-  {job_id:"4418750878",title:"Digital Marketing Senior Specialist",company:"Etstur",location:"Kadıköy, İstanbul",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4418750878/",source:"Agito Software",date:"2026-06-01",type:"application"},
-  {job_id:"4416086915",title:"Product Manager (Mobile)",company:"Lucida AI",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4416086915/",source:"Pazarama",date:"2026-06-01",type:"application"},
-  {job_id:"4413692447",title:"Jr. Product Manager (New Grad)",company:"Leap Games",location:"Sarıyer, İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4413692447/",source:"Kiğılı",date:"2026-06-01",type:"application"},
-  {job_id:"4410823130",title:"Product Marketing Manager (EN/TR)",company:"Google",location:"Greater Istanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4410823130/",source:"Kiğılı",date:"2026-06-01",type:"application"},
-  {job_id:"4413654767",title:"Product Specialist (New Grad)",company:"Agave Games",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4413654767/",source:"OBSS",date:"2026-06-01",type:"application"},
-  {job_id:"4418711301",title:"Senior CRM Analytics Specialist",company:"Watsons Türkiye",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4418711301/",source:"ANDEVOS",date:"2026-06-01",type:"application"},
-  {job_id:"4421368107",title:"Brand Specialist",company:"CHERY",location:"İstanbul",work_type:"Ofiste",url:"https://www.linkedin.com/jobs/view/4421368107/",source:"ANDEVOS",date:"2026-06-01",type:"application"},
-  {job_id:"4418736068",title:"Product Specialist",company:"Toyota Türkiye",location:"İstanbul",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4418736068/",source:"Tam Finans",date:"2026-06-01",type:"application"},
-  {job_id:"4411372878",title:"Portfolio & Marketing Intelligence Manager",company:"Pernod Ricard",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4411372878/",source:"growth alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4422885844_a",title:"Mobile Growth Specialist",company:"360 Company LLC",location:"İstanbul",work_type:"",url:"https://www.linkedin.com/jobs/view/4422885844/",source:"growth alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4417085704",title:"Director of Growth",company:"bitaksi",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4417085704/",source:"growth alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4422825507",title:"Senior Product Manager",company:"Tıkla Gelsin",location:"Sarıyer",work_type:"",url:"https://www.linkedin.com/jobs/view/4422825507/",source:"growth alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418745298",title:"Dijital Pazarlama & E-Ticaret Uzmanı",company:"Genfar Supplements",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418745298/",source:"marketing alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418772139",title:"Pazarlama Uzmanı",company:"Ekokimya",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418772139/",source:"marketing alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418750782",title:"Kurumsal Satış Uzmanı",company:"MultiSport Türkiye",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418750782/",source:"sales alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418733426",title:"Fleet Sales Specialist",company:"Toyota Türkiye",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418733426/",source:"sales alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4407416455",title:"Product Owner",company:"Asis Elektronik",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4407416455/",source:"product owner alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418730765",title:"Product Manager - Puzzle Games",company:"Rollic",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418730765/",source:"product owner alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4411300793",title:"Product Manager",company:"bitaksi",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4411300793/",source:"product owner alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418737170",title:"LCV Product Manager",company:"Toyota Türkiye",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418737170/",source:"product owner alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4407735622",title:"Dijital Deneyim Yönetimi Yönetmeni",company:"QNB Türkiye",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4407735622/",source:"product owner alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418784195",title:"Digital Marketing Communication Specialist",company:"Embla Medical",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418784195/",source:"marketing alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418736511",title:"Dijital Pazarlama Uzmanı",company:"Ship to More",location:"İstanbul, Türkiye",work_type:"",url:"https://www.linkedin.com/jobs/view/4418736511/",source:"marketing alarmı",date:"2026-06-02",type:"alert"},
-  {job_id:"4418736068_a",title:"Product Specialist",company:"Toyota Türkiye",location:"İstanbul, Türkiye",work_type:"Hybrid",url:"https://www.linkedin.com/jobs/view/4418736068/",source:"marketing alarmı",date:"2026-06-02",type:"alert"},
+  // ===== ALARMLAR — YENİ (5-6 Haz) =====
+  {id:101, src:'alarm', date:'2026-06-05', cat:'big',
+   company:'Garanti BBVA', pos:'Büyüme ve Müşteri Kazanımı - Associate/Lead',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐⭐',
+   note:'TAM UYUM — Turkcell Senior Acquisition & Growth Manager geçmişin birebir. Henüz başvurmadıysan hızlıca yap!',
+   script:'Turkcell acquisition + growth hikayeleri',
+   url:'https://www.linkedin.com/jobs/view/4422905005/'},
+
+  {id:102, src:'alarm', date:'2026-06-05', cat:'startup',
+   company:'Pine Games', pos:'Product Specialist',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   note:'Oyun sektörü product specialist rolü.',
+   url:'https://www.linkedin.com/jobs/view/4420700495/'},
+
+  // ===== BAŞVURULAR — 5 HAZ =====
+  {id:201, src:'apply', date:'2026-06-05', cat:'mid',
+   company:'n11', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'⚠️ ESKİ İŞVEREN — Growth & Business Partnerships geçmişin var, güçlü aday konumundasın.',
+   script:'Papara kurtarma + Samsung/Vitra 360° kampanyaları',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:202, src:'apply', date:'2026-06-05', cat:'big',
+   company:'Hepsiburada', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'NASDAQ listeli büyük e-ticaret platformu.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:203, src:'apply', date:'2026-06-05', cat:'big',
+   company:'Beymen Group', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Lüks moda grubu.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:204, src:'apply', date:'2026-06-05', cat:'big',
+   company:'ING Türkiye', pos:'Başvuru Gönderildi (2. pozisyon)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'⚠️ Dün Digital Marketing Expert pozisyonundan red aldın — bu farklı bir pozisyon mu kontrol et.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:205, src:'apply', date:'2026-06-05', cat:'mid',
+   company:'Skechers Türkiye', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'Global spor ayakkabı markası Türkiye operasyonu.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:206, src:'apply', date:'2026-06-05', cat:'mid',
+   company:'Gratis', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'Güzellik ve kişisel bakım perakende zinciri.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:207, src:'apply', date:'2026-06-05', cat:'mid',
+   company:'ZÜBER', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'Taksi/ulaşım uygulaması.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:208, src:'apply', date:'2026-06-05', cat:'mid',
+   company:'TAV Operation Services', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   note:'Havalimanı operasyon hizmetleri.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  // ===== BAŞVURULAR — 4 HAZ =====
+  {id:301, src:'apply', date:'2026-06-04', cat:'big',
+   company:'Mavi', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Büyük Türk moda markası.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:302, src:'apply', date:'2026-06-04', cat:'big',
+   company:'Migros Ticaret', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Büyük perakende zinciri.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:303, src:'apply', date:'2026-06-04', cat:'mid',
+   company:'OPPO Türkiye', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   note:'Çin kökenli teknoloji markası.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:304, src:'apply', date:'2026-06-04', cat:'mid',
+   company:'BtcTurk | Kripto', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'Kripto para borsası, growth/marketing rolü.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:305, src:'apply', date:'2026-06-04', cat:'mid',
+   company:'getirfinans', pos:'Başvuru Gönderildi (CV Görüntülendi ✅)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Getir bünyesi finans kolu — başvurudan aynı gün CV görüldü!',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:306, src:'apply', date:'2026-06-04', cat:'big',
+   company:'ING Türkiye', pos:'Digital Marketing Expert (1. başvuru)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'❌ RED ALINDI (4 Haz). LinkedIn red bildirimi.',
+   url:'https://tr.linkedin.com/jobs/', status:'ilgisiz'},
+
+  {id:307, src:'apply', date:'2026-06-04', cat:'mid',
+   company:'Sigortam.net', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   script:'Sigortam.net mülakatı + QNB sigorta geçmişi',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:308, src:'apply', date:'2026-06-04', cat:'startup',
+   company:'Scorp', pos:'Mülakat → 8 Haz 14:00 Google Meet',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'🎯 MÜLAKAT VAR — Marketing Data Analyst. Cemre Dandin ile 30 dakikalık görüşme.',
+   url:'https://meet.google.com/zzd-wcbq-pca', status:'basvuruldu'},
+
+  {id:309, src:'apply', date:'2026-06-04', cat:'startup',
+   company:'Peak', pos:'Product Manager, Games (Lever ✅)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Lever üzerinden başvuru onaylandı.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:310, src:'apply', date:'2026-06-04', cat:'big',
+   company:'Yemeksepeti', pos:'Marketing Campaigns Executive (Delivery Hero ✅)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Delivery Hero grubu, onay maili geldi.',
+   script:'Turkcell kampanya yönetimi + co-marketing',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:311, src:'apply', date:'2026-06-04', cat:'big',
+   company:'Amazon', pos:'Marketing Manager, Seller Services (✅)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Amazon Türkiye, onay maili geldi.',
+   url:'https://amazon.jobs/', status:'basvuruldu'},
+
+  {id:312, src:'apply', date:'2026-06-04', cat:'mid',
+   company:'Obilet', pos:'Strategic Planning & Business Specialist (Recruitee ✅)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐',
+   note:'Recruitee üzerinden başvuru alındı.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  // ===== BAŞVURULAR — 3 HAZ =====
+  {id:401, src:'apply', date:'2026-06-03', cat:'big',
+   company:'MediaMarkt Turkey', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:402, src:'apply', date:'2026-06-03', cat:'mid',
+   company:'ARVEN CONSULTANCY', pos:'Başvuru Gönderildi (CV Görüntülendi)',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   note:'CV görüntülendi. Ayrıca ARVEN\'dan User Acquisition Specialist ilanı da var.',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:403, src:'apply', date:'2026-06-03', cat:'mid',
+   company:'Dreame Technology', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  {id:404, src:'apply', date:'2026-06-03', cat:'mid',
+   company:'Derimod', pos:'Başvuru Gönderildi',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐',
+   url:'https://tr.linkedin.com/jobs/', status:'basvuruldu'},
+
+  // ===== ALARMLAR — ÖNCEKİ =====
+  {id:501, src:'alarm', date:'2026-06-04', cat:'big',
+   company:'Trendyol Go by Uber Eats', pos:'Business Analyst',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Trendyol bünyesi, Uber Eats operasyonu — veri analizi + büyüme odaklı.',
+   url:'https://www.linkedin.com/jobs/view/4423939837/'},
+
+  {id:502, src:'alarm', date:'2026-06-04', cat:'big',
+   company:'Garanti BBVA Ödeme Sistemleri', pos:'Senior Digital Product Manager',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Büyük banka ödeme sistemleri PM rolü.',
+   script:'QNB fizibilite + n11 Masterpass',
+   url:'https://www.linkedin.com/jobs/view/4422679545/'},
+
+  {id:503, src:'alarm', date:'2026-06-04', cat:'big',
+   company:'QNB Türkiye', pos:'Network İş Geliştirme ve Strateji Yönetmeni',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'⚠️ QNB 3. pozisyon — strateji + iş geliştirme.',
+   script:'QNB portföy + fizibilite',
+   url:'https://www.linkedin.com/jobs/view/4419678053/'},
+
+  {id:504, src:'alarm', date:'2026-06-03', cat:'big',
+   company:'TikTok', pos:'Partner Growth & Incubation Manager (Turkey)',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐⭐',
+   note:'⚠️ LinkedIn başvurusu HATALIYDI — tekrar başvur! Partnership + growth tam uyum.',
+   script:'Papara kurtarma + n11 partnership',
+   url:'https://www.linkedin.com/jobs/view/4423911732/'},
+
+  {id:505, src:'alarm', date:'2026-06-03', cat:'big',
+   company:'Pernod Ricard', pos:'Portfolio & Marketing Intelligence Manager',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'FMCG büyük marka, marketing intelligence + portfolio yönetimi.',
+   url:'https://www.linkedin.com/jobs/view/4411372878/'},
+
+  {id:506, src:'alarm', date:'2026-06-03', cat:'mid',
+   company:'360 Company LLC', pos:'Mobile Growth Specialist',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'Growth specialist — Turkcell acquisition deneyimiyle tam uyum.',
+   url:'https://www.linkedin.com/jobs/view/4422885844/'},
+
+  {id:507, src:'alarm', date:'2026-06-03', cat:'startup',
+   company:'Apollo', pos:'Product Owner',
+   loc:'İstanbul', work:'Hibrit', fit:'⭐⭐⭐⭐',
+   note:'Hızlı büyüyen startup. Apollo CV\'ni görüntüledi!',
+   url:'https://www.linkedin.com/jobs/view/4419278486/'},
+
+  {id:508, src:'alarm', date:'2026-06-03', cat:'big',
+   company:'QNB Türkiye', pos:'Product Mgmt - Projects & Partnerships AM/Supervisor',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'⚠️ QNB 2. pozisyon — ürün + partnership hibrid rol.',
+   url:'https://www.linkedin.com/jobs/view/4419241599/'},
+
+  {id:509, src:'alarm', date:'2026-06-03', cat:'big',
+   company:'QNB Türkiye', pos:'Servis Bankacılığı İş Birlikleri Büyüme Uzmanı',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'⚠️ QNB 1. pozisyon — bankacılık + büyüme + iş birlikleri.',
+   url:'https://www.linkedin.com/jobs/view/4419240626/'},
+
+  {id:510, src:'alarm', date:'2026-06-04', cat:'startup',
+   company:'Grand Games', pos:'Product Manager',
+   loc:'İstanbul', work:'Ofiste', fit:'⭐⭐⭐⭐',
+   note:'Oyun sektörü PM rolü.',
+   url:'https://www.linkedin.com/jobs/view/4384818290/'},
 ];
 
-const tagWT = {Hybrid:'tag-hybrid', Ofiste:'tag-ofiste', Uzaktan:'tag-uzaktan'};
-// "active" = beklemede + incelenecek (default tab - hides başvuruldu & ilgisiz)
-let activeTab = 'active'; // 'active' | 'incelenecek' | 'başvuruldu' | 'ilgisiz'
-let filters = {source:'all', wt:'all'};
-let sortOrder = 'new';
+let currentTab = 'aktif';
+let sortDesc = true;
 
-function getSaved() { return JSON.parse(localStorage.getItem('jobStatuses')||'{}'); }
-
-function fmtDate(d) {
-  const dt = new Date(d);
-  return `${dt.getDate()} ${['Oca','Şub','Mar','Nis','May','Haz','Tem','Ağu','Eyl','Eki','Kas','Ara'][dt.getMonth()]}`;
+function getStatus(job) {
+  return localStorage.getItem('js_' + job.id) || job.status || 'incelenecek';
 }
 
-function statusMatchesTab(status, tab) {
-  if (tab === 'active') return status === 'beklemede' || status === 'incelenecek';
-  return status === tab;
+function setStatus(id, val) {
+  localStorage.setItem('js_' + id, val);
+  renderCards();
 }
 
-function renderAll() {
-  const saved = getSaved();
-  const q = document.getElementById('search-input').value.toLowerCase().trim();
-  const list = document.getElementById('jobs-list');
-  list.innerHTML = '';
+function switchTab(tab, el) {
+  currentTab = tab;
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  el.classList.add('active');
+  renderCards();
+}
+
+function toggleSort() {
+  sortDesc = !sortDesc;
+  document.getElementById('sortLabel').textContent = sortDesc ? 'Yeniden Eskiye' : 'Eskiden Yeniye';
+  renderCards();
+}
+
+function renderCards() {
+  const q = document.getElementById('searchInput').value.toLowerCase();
+  const wf = document.getElementById('workFilter').value;
 
   let jobs = JOBS.filter(j => {
-    const status = saved[j.job_id] || 'beklemede';
-    const tabOk = statusMatchesTab(status, activeTab);
-    const srcOk = filters.source === 'all' || j.type === filters.source;
-    const wtOk = filters.wt === 'all' || j.work_type === filters.wt;
-    const searchOk = !q || j.title.toLowerCase().includes(q) || j.company.toLowerCase().includes(q);
-    return tabOk && srcOk && wtOk && searchOk;
+    const s = getStatus(j);
+    if (currentTab === 'aktif') return s === 'incelenecek';
+    return s === currentTab;
   });
 
-  jobs.sort((a,b) => sortOrder === 'new'
-    ? new Date(b.date) - new Date(a.date)
-    : new Date(a.date) - new Date(b.date)
-  );
+  if (q) jobs = jobs.filter(j => j.company.toLowerCase().includes(q) || j.pos.toLowerCase().includes(q));
+  if (wf) jobs = jobs.filter(j => j.work === wf);
 
+  jobs.sort((a, b) => sortDesc ? b.date.localeCompare(a.date) : a.date.localeCompare(b.date));
+
+  const container = document.getElementById('cardContainer');
+  container.innerHTML = '';
   if (jobs.length === 0) {
-    list.innerHTML = '<div class="empty-state"><div class="icon">🔍</div>Eşleşen ilan bulunamadı.</div>';
+    container.innerHTML = '<div class="empty">Bu sekmede ilan yok.</div>';
   } else {
-    jobs.forEach(j => {
-      const status = saved[j.job_id] || 'beklemede';
-      const wtTag = j.work_type ? `<span class="tag ${tagWT[j.work_type]||''}">${j.work_type}</span>` : '';
-      const srcTag = j.type==='application' ? `<span class="tag tag-app">📩 Başvuru</span>` : `<span class="tag tag-alert">🔔 Alarm</span>`;
-      const card = document.createElement('div');
-      card.className = 'card';
-      card.dataset.id = j.job_id;
-      card.dataset.status = status;
-      card.innerHTML = `
-        <div class="card-top">
-          <div class="card-title">${j.title}</div>
-          <div class="card-date">${fmtDate(j.date)}</div>
-        </div>
-        <div>
-          <div class="card-company">${j.company}</div>
-          <div class="card-loc">📍 ${j.location}</div>
-        </div>
-        <div class="tags">${wtTag}${srcTag}</div>
-        <div class="card-bottom">
-          <select class="status-select" onchange="updateStatus('${j.job_id}',this.value)">
-            <option value="beklemede"${status==='beklemede'?' selected':''}>⏳ Beklemede</option>
-            <option value="incelenecek"${status==='incelenecek'?' selected':''}>🔍 İncelenecek</option>
-            <option value="başvuruldu"${status==='başvuruldu'?' selected':''}>✅ Başvuruldu</option>
-            <option value="ilgisiz"${status==='ilgisiz'?' selected':''}>❌ İlgisiz</option>
-          </select>
-          <a class="btn-view" href="${j.url}" target="_blank">Görüntüle →</a>
-        </div>
-      `;
-      list.appendChild(card);
-    });
+    jobs.forEach(j => container.appendChild(buildCard(j)));
   }
-
-  document.getElementById('result-info').textContent = `${jobs.length} ilan gösteriliyor`;
-  updateCounts(saved);
+  updateCounts();
 }
 
-function updateCounts(saved) {
-  if (!saved) saved = getSaved();
-  let counts = {beklemede:0, incelenecek:0, başvuruldu:0, ilgisiz:0};
-  JOBS.forEach(j => { const s = saved[j.job_id]||'beklemede'; counts[s]++; });
-  document.getElementById('num-active').textContent = counts.beklemede + counts.incelenecek;
-  document.getElementById('num-incelenecek').textContent = counts.incelenecek;
-  document.getElementById('num-başvuruldu').textContent = counts.başvuruldu;
-  document.getElementById('num-ilgisiz').textContent = counts.ilgisiz;
+function buildCard(j) {
+  const status = getStatus(j);
+  const srcTag = j.src === 'alarm'
+    ? '<span class="tag alarm">🔔 Alarm</span>'
+    : '<span class="tag apply">📩 Başvuru</span>';
+  const catLabel = {big:'Büyük Marka', mid:'Mid', startup:'Startup', remote:'Remote', warn:'⚠️ Dikkat'}[j.cat] || j.cat;
+  const intTag = j.note && j.note.includes('MÜLAKAT') ? '<span class="tag interview">🎯 MÜLAKAT</span>' : '';
+  const scrTag = j.script ? `<span class="tag script">💬 ${j.script}</span>` : '';
+  const qnbTag = j.company.includes('QNB') ? '<span class="tag warn">⚠️ Çok başvuru</span>' : '';
+
+  const d = document.createElement('div');
+  d.className = `card cat-${j.cat}`;
+  d.innerHTML = `
+    <div class="card-top">
+      <div style="flex:1">
+        <div class="card-company">${j.company}</div>
+        <div class="card-title">${j.pos}</div>
+        <div class="card-meta">📍 ${j.loc} · ${j.work} · ${j.date}</div>
+      </div>
+      <div class="fit">${j.fit}</div>
+    </div>
+    ${j.note ? `<div class="card-note">${j.note}</div>` : ''}
+    <div class="card-tags">
+      ${srcTag}
+      <span class="tag ${j.cat}">${catLabel}</span>
+      ${intTag}${qnbTag}${scrTag}
+    </div>
+    <div class="card-bottom">
+      <select class="status-select status-${status}"
+        onchange="setStatus(${j.id},this.value);this.className='status-select status-'+this.value">
+        <option value="incelenecek" ${status==='incelenecek'?'selected':''}>İncelenecek</option>
+        <option value="basvuruldu" ${status==='basvuruldu'?'selected':''}>Başvuruldu</option>
+        <option value="ilgisiz" ${status==='ilgisiz'?'selected':''}>İlgisiz</option>
+      </select>
+      <a class="view-btn" href="${j.url}" target="_blank">Görüntüle →</a>
+    </div>
+  `;
+  return d;
 }
 
-function updateStatus(jobId, newStatus) {
-  const saved = getSaved();
-  saved[jobId] = newStatus;
-  localStorage.setItem('jobStatuses', JSON.stringify(saved));
-  updateCounts(saved);
-  // Remove card from current view if it no longer belongs to active tab
-  const card = document.querySelector(`.card[data-id="${jobId}"]`);
-  if (card && !statusMatchesTab(newStatus, activeTab)) {
-    card.style.transition = 'opacity 0.25s, transform 0.25s';
-    card.style.opacity = '0';
-    card.style.transform = 'translateX(30px)';
-    setTimeout(() => { renderAll(); }, 260);
-  } else if (card) {
-    card.dataset.status = newStatus;
-  }
+function updateCounts() {
+  const c = {incelenecek:0, basvuruldu:0, ilgisiz:0};
+  JOBS.forEach(j => { c[getStatus(j)]++; });
+  document.getElementById('cnt-aktif').textContent = c.incelenecek;
+  document.getElementById('cnt-incelenecek').textContent = c.incelenecek;
+  document.getElementById('cnt-basvuruldu').textContent = c.basvuruldu;
+  document.getElementById('cnt-ilgisiz').textContent = c.ilgisiz;
 }
 
-function setStatus(tab) {
-  activeTab = tab;
-  document.querySelectorAll('.stat').forEach(s => s.classList.remove('active-stat'));
-  document.getElementById(`stat-tab-${tab}`).classList.add('active-stat');
-  document.getElementById('search-input').value = '';
-  renderAll();
-}
-
-function setFilter(type, val, btn) {
-  const groups = {
-    source: ['all','application','alert'],
-    wt: ['all','Hybrid','Ofiste','Uzaktan']
-  };
-  document.querySelectorAll('.btn').forEach(b => {
-    const s = b.onclick?.toString()||'';
-    if (groups[type]?.some(v => s.includes(`'${type}','${v}'`))) b.classList.remove('active');
-  });
-  filters[type] = val;
-  btn.classList.add('active');
-  renderAll();
-}
-
-function setSort(order) {
-  sortOrder = order;
-  document.getElementById('btn-sort-new').className = 'btn'+(order==='new'?' sort-active':'');
-  document.getElementById('btn-sort-old').className = 'btn'+(order==='old'?' sort-active':'');
-  renderAll();
-}
-
-renderAll();
+renderCards();
 </script>
 </body>
 </html>
