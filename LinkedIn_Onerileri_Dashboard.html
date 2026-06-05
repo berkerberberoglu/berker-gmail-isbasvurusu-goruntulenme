@@ -395,13 +395,13 @@ function buildCard(j) {
       ${intTag}${qnbTag}${scrTag}
     </div>
     <div class="card-bottom">
+      <a class="view-btn" href="${j.url}" target="_blank">Görüntüle →</a>
       <select class="status-select status-${status}"
         onchange="setStatus(${j.id},this.value);this.className='status-select status-'+this.value">
         <option value="incelenecek" ${status==='incelenecek'?'selected':''}>İncelenecek</option>
         <option value="basvuruldu" ${status==='basvuruldu'?'selected':''}>Başvuruldu</option>
         <option value="ilgisiz" ${status==='ilgisiz'?'selected':''}>İlgisiz</option>
       </select>
-      <a class="view-btn" href="${j.url}" target="_blank">Görüntüle →</a>
     </div>
   `;
   return d;
