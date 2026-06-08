@@ -132,7 +132,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">12</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">18</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">61</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -151,7 +151,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">12</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">18</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -248,12 +248,12 @@
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">QNB Türkiye</td>
-          <td style="padding:6px 4px;color:#94a3b8">4. başvuruyu görüntüledi 👀</td>
+          <td style="padding:6px 4px;color:#94a3b8">Growth Marketing Manager başvurusu görüntülendi 👀</td>
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">8 Haz</td>
         </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Enpara.com</td>
-          <td style="padding:6px 4px;color:#94a3b8">QNB bünyesi dijital banka — CV görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#94a3b8">Brand Partnerships & Merchant Relations Executive başvurusu görüntülendi 👀</td>
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">8 Haz</td>
         </tr>
         <tr style="border-bottom:1px solid #334155">
@@ -317,10 +317,91 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (12 adet)</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (18 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Mobven</div>
+            <div class="rt-pos">Pozisyon (mobven@mail.gethirex.com)</div>
+            <div class="rt-reason">"Bu aşamada mevcut pozisyon için sizinle ilerleyemeyeceğimizi üzülerek paylaşmak istiyoruz."</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Adapty / FunnelFox</div>
+            <div class="rt-pos">Customer Success Manager — Angelina Khannova</div>
+            <div class="rt-reason">"Unfortunately, this time round we felt there were some others who'd be better suited." — PeopleForce HR</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Trendyol</div>
+            <div class="rt-pos">Pozisyon (hire.lever.co)</div>
+            <div class="rt-reason">"After reviewing your work and experience, we regret to inform you that we will not be moving forward."</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Carla</div>
+            <div class="rt-pos">Senior Product Manager</div>
+            <div class="rt-reason">LinkedIn red bildirimi</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">OPPO Türkiye</div>
+            <div class="rt-pos">Senior Digital Marketing Manager</div>
+            <div class="rt-reason">LinkedIn red bildirimi</div>
+          </td>
+          <td class="rt-date">7 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Amazon</div>
+            <div class="rt-pos">Marketing Manager (Amazon Seller Services)</div>
+            <div class="rt-reason">"After careful consideration and review of your application, we have decided to move forward with other candidates." — Amazon Recruiting</div>
+          </td>
+          <td class="rt-date">6 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">adidas</div>
+            <div class="rt-pos">Senior Specialist Trade Marketing / Retail Marketing</div>
+            <div class="rt-reason">"After careful consideration, we've decided not to move forward with your application." — adidas Recruiting</div>
+          </td>
+          <td class="rt-date">6 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Derimod</div>
+            <div class="rt-pos">CRM Campaign &amp; Loyalty Lead</div>
+            <div class="rt-reason">LinkedIn red bildirimi</div>
+          </td>
+          <td class="rt-date">6 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Jollify Games</div>
+            <div class="rt-pos">Senior UA Manager (Mobile Games)</div>
+            <div class="rt-reason">LinkedIn red bildirimi</div>
+          </td>
+          <td class="rt-date">6 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -347,15 +428,6 @@
             <div class="rt-reason">"We've decided to move forward with applicants who were a slightly better match."</div>
           </td>
           <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">LEGO® Careers</div>
-            <div class="rt-pos">Analytics &amp; Insights Partner</div>
-            <div class="rt-reason">"We've decided to move forward with applicants who were a slightly better match."</div>
-          </td>
-          <td class="rt-date">2 Haz</td>
         </tr>
         <tr>
           <td>❌</td>
@@ -387,15 +459,6 @@
         <tr>
           <td>❌</td>
           <td>
-            <div class="rt-company">LG Electronics Türkiye</div>
-            <div class="rt-pos">Assistant Product Manager</div>
-            <div class="rt-reason">LinkedIn red bildirimi (görsel içerikli)</div>
-          </td>
-          <td class="rt-date">3 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
             <div class="rt-company">ANDEVOS Bilgi Teknolojileri</div>
             <div class="rt-pos">İş Analisti</div>
             <div class="rt-reason">LinkedIn red bildirimi</div>
@@ -405,29 +468,20 @@
         <tr>
           <td>❌</td>
           <td>
-            <div class="rt-company">Mobven</div>
-            <div class="rt-pos">Pozisyon (mobven@mail.gethirex.com)</div>
-            <div class="rt-reason">"Bu aşamada mevcut pozisyon için sizinle ilerleyemeyeceğimizi üzülerek paylaşmak istiyoruz."</div>
+            <div class="rt-company">LG Electronics Türkiye</div>
+            <div class="rt-pos">Assistant Product Manager</div>
+            <div class="rt-reason">LinkedIn red bildirimi (görsel içerikli)</div>
           </td>
-          <td class="rt-date">8 Haz</td>
+          <td class="rt-date">3 Haz</td>
         </tr>
         <tr>
           <td>❌</td>
           <td>
-            <div class="rt-company">Adapty / FunnelFox</div>
-            <div class="rt-pos">Customer Success Manager</div>
-            <div class="rt-reason">"Unfortunately, this time round we felt there were some others who'd be better suited." — PeopleForce HR</div>
+            <div class="rt-company">LEGO® Careers</div>
+            <div class="rt-pos">Analytics &amp; Insights Partner</div>
+            <div class="rt-reason">"We've decided to move forward with applicants who were a slightly better match."</div>
           </td>
-          <td class="rt-date">8 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Amazon</div>
-            <div class="rt-pos">Marketing Manager (Amazon Seller Services)</div>
-            <div class="rt-reason">"After careful consideration and review of your application, we have decided to move forward with other candidates." — Amazon Recruiting</div>
-          </td>
-          <td class="rt-date">6 Haz</td>
+          <td class="rt-date">2 Haz</td>
         </tr>
       </table>
     </div>
