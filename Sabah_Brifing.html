@@ -132,7 +132,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">9</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">12</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">61</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -151,7 +151,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">9</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">12</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -205,7 +205,7 @@
   <div class="section">
     <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
 
-    <div class="card urgent">
+    <div class="card urgent" id="aksiyon-wingfinder">
       <div class="card-title">Red Bull Wingfinder — Strategic Partnership Manager</div>
       <div class="card-sub">wingfinder@career.redbull.com · 4 Haziran 2026</div>
       <div class="countdown">Süre geçmiş — kişisel linkle hâlâ tamamlanabilir</div>
@@ -213,24 +213,27 @@
       <span class="tag orange">Acil</span>
       <span class="tag purple">Strategic Partnership Manager</span><br>
       <a class="action-btn wingfinder" href="https://www.wingfinder.com/invite/P_uFNRFuc2P6jCrNPVm84DS-mZ9nkp56d2hmAF9NZCR14vFJnbv0hIXauAhZLMKf" target="_blank">Wingfinder'ı Tamamla →</a>
+      <button onclick="doneAksiyon('wingfinder')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
     </div>
 
-    <div class="card warning">
+    <div class="card warning" id="aksiyon-tiktok">
       <div class="card-title">TikTok LIVE — Partner Growth & Incubation Manager (Turkey)</div>
       <div class="card-sub">jobs-noreply@linkedin.com · 3 Haziran — Başvuru hata verdi</div>
       <div class="card-detail">LinkedIn başvurusu iletilemedi. Tekrar denemen gerekiyor.</div>
       <span class="tag red">Başvuru İletilmedi</span>
       <span class="tag yellow">Tekrar Başvur</span><br>
       <a class="action-btn meet" href="https://www.linkedin.com/jobs/view/4423911732/" target="_blank" style="background:#f97316">LinkedIn'de Aç →</a>
+      <button onclick="doneAksiyon('tiktok')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
     </div>
 
-    <div class="card warning">
+    <div class="card warning" id="aksiyon-garanti">
       <div class="card-title">Garanti BBVA — Büyüme ve Müşteri Kazanımı Associate/Lead 🔥</div>
       <div class="card-sub">Alarm ilanı · 5 Haziran 2026</div>
       <div class="card-detail">Senin Turkcell Senior Acquisition & Growth Manager geçmişinle TAM UYUM. Henüz başvurulmadıysa hızlıca başvur.</div>
       <span class="tag green">⭐⭐⭐⭐⭐ Tam Uyum</span>
       <span class="tag blue">Garanti BBVA</span><br>
       <a class="action-btn meet" href="https://www.linkedin.com/jobs/view/4422905005/" target="_blank" style="background:#22c55e">Hemen Başvur →</a>
+      <button onclick="doneAksiyon('garanti')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
     </div>
   </div>
 
@@ -314,7 +317,7 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (9 adet)</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (12 adet)</div>
 
     <div class="card red-card">
       <table class="red-table">
@@ -399,6 +402,33 @@
           </td>
           <td class="rt-date">4 Haz</td>
         </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Mobven</div>
+            <div class="rt-pos">Pozisyon (mobven@mail.gethirex.com)</div>
+            <div class="rt-reason">"Bu aşamada mevcut pozisyon için sizinle ilerleyemeyeceğimizi üzülerek paylaşmak istiyoruz."</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Adapty / FunnelFox</div>
+            <div class="rt-pos">Customer Success Manager</div>
+            <div class="rt-reason">"Unfortunately, this time round we felt there were some others who'd be better suited." — PeopleForce HR</div>
+          </td>
+          <td class="rt-date">8 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Amazon</div>
+            <div class="rt-pos">Marketing Manager (Amazon Seller Services)</div>
+            <div class="rt-reason">"After careful consideration and review of your application, we have decided to move forward with other candidates." — Amazon Recruiting</div>
+          </td>
+          <td class="rt-date">6 Haz</td>
+        </tr>
       </table>
     </div>
 
@@ -442,7 +472,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 8 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 8 Haziran 2026 18:00 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
@@ -451,6 +481,23 @@ function showTab(name, el) {
   document.getElementById('panel-' + name).classList.add('active');
   el.classList.add('active');
 }
+
+function doneAksiyon(id) {
+  localStorage.setItem('done_aksiyon_' + id, '1');
+  const el = document.getElementById('aksiyon-' + id);
+  if (el) { el.style.transition = 'opacity 0.3s'; el.style.opacity = '0'; setTimeout(() => el.style.display = 'none', 300); }
+}
+
+function loadAksiyonStates() {
+  ['wingfinder','tiktok','garanti'].forEach(id => {
+    if (localStorage.getItem('done_aksiyon_' + id)) {
+      const el = document.getElementById('aksiyon-' + id);
+      if (el) el.style.display = 'none';
+    }
+  });
+}
+
+window.addEventListener('DOMContentLoaded', loadAksiyonStates);
 
 const INTERVIEW_STATES = JSON.parse(localStorage.getItem('interviewStates') || '{}');
 
