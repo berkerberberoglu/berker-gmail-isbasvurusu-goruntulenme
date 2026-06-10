@@ -3,631 +3,261 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Sabah Brifing — Berker Berberoğlu</title>
+<title>Sabah Brifing — Berker</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #0f172a; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 16px; min-height: 100vh; }
-
-  .header { text-align: center; padding: 20px 0 12px; }
-  .header h1 { font-size: 22px; font-weight: 700; color: #f8fafc; }
-  .badge-live { display: inline-block; background: #22c55e; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; text-transform: uppercase; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%,100%{opacity:1}50%{opacity:.6} }
-  .date { color: #64748b; font-size: 12px; margin-top: 4px; }
-
-  /* TABS */
-  .main-tabs { display: flex; gap: 0; margin: 12px 0; background: #1e293b; border-radius: 10px; padding: 4px; }
-  .main-tab { flex: 1; background: none; border: none; color: #64748b; font-size: 12px; font-weight: 600; padding: 8px 6px; border-radius: 7px; cursor: pointer; text-align: center; transition: all .15s; }
-  .main-tab.active { background: #0f172a; color: #f1f5f9; }
-  .main-tab .tab-count { display: inline-block; background: #ef4444; color: #fff; font-size: 9px; font-weight: 700; padding: 1px 5px; border-radius: 99px; margin-left: 3px; }
-  .main-tab.done-tab .tab-count { background: #22c55e; }
-  .tab-panel { display: none; }
-  .tab-panel.active { display: block; }
-
-  /* STATS */
-  .stats-row { display: flex; gap: 8px; overflow-x: auto; padding: 4px 0 12px; scrollbar-width: none; }
-  .stats-row::-webkit-scrollbar { display: none; }
-  .stat { background: #1e293b; border-radius: 12px; padding: 10px 14px; min-width: 90px; text-align: center; flex-shrink: 0; }
-  .stat-num { font-size: 22px; font-weight: 700; }
-  .stat-label { font-size: 10px; color: #94a3b8; margin-top: 2px; line-height: 1.2; }
-  .stat.red .stat-num { color: #ef4444; }
-  .stat.green .stat-num { color: #22c55e; }
-  .stat.yellow .stat-num { color: #f59e0b; }
+  .header { text-align: center; padding: 18px 0 10px; }
+  .header h1 { font-size: 20px; font-weight: 700; color: #f8fafc; }
+  .badge { display: inline-block; background: #22c55e; color: #fff; font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; margin-left: 6px; vertical-align: middle; text-transform: uppercase; }
+  .date { color: #64748b; font-size: 11px; margin-top: 3px; }
+  .summary-row { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 12px 0; padding-bottom: 2px; }
+  .summary-row::-webkit-scrollbar { display: none; }
+  .stat { background: #1e293b; border-radius: 10px; padding: 10px 14px; text-align: center; flex-shrink: 0; min-width: 70px; }
+  .stat-num { font-size: 22px; font-weight: 800; }
+  .stat-label { font-size: 9px; color: #64748b; font-weight: 600; text-transform: uppercase; margin-top: 1px; }
+  .stat.red .stat-num { color: #f87171; }
+  .stat.green .stat-num { color: #4ade80; }
+  .stat.yellow .stat-num { color: #fbbf24; }
   .stat.blue .stat-num { color: #60a5fa; }
-  .stat.purple .stat-num { color: #a78bfa; }
-
-  /* DASHBOARD LINK */
-  .dashboard-link { background: linear-gradient(135deg, #1e40af, #7c3aed); border-radius: 12px; padding: 12px 16px; margin: 0 0 14px; display: flex; align-items: center; justify-content: space-between; text-decoration: none; color: #fff; }
-  .dashboard-link .dl-title { font-size: 13px; font-weight: 600; }
-  .dashboard-link .dl-sub { font-size: 11px; color: #c7d2fe; margin-top: 1px; }
-
-  /* MÜLAKAT KUTUSU */
-  .interview-box { background: #1a0a0a; border: 1px solid #ef4444; border-radius: 12px; padding: 12px 14px; margin-bottom: 14px; }
-  .interview-box .ib-title { font-size: 12px; font-weight: 700; color: #f87171; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 0.5px; }
-  .interview-row { display: flex; align-items: center; gap: 8px; padding: 7px 0; border-bottom: 1px solid #2d1a1a; flex-wrap: wrap; }
-  .interview-row:last-child { border-bottom: none; }
-  .ir-date { font-size: 11px; font-weight: 700; color: #fbbf24; white-space: nowrap; min-width: 110px; }
-  .ir-info { flex: 1; }
-  .ir-company { font-size: 13px; font-weight: 600; color: #f1f5f9; }
-  .ir-pos { font-size: 11px; color: #94a3b8; }
-  .ir-platform { font-size: 10px; color: #60a5fa; background: #1e293b; padding: 2px 8px; border-radius: 99px; white-space: nowrap; }
-  .countdown-chip { font-size: 10px; font-weight: 700; color: #ef4444; background: #ef444415; padding: 2px 7px; border-radius: 99px; white-space: nowrap; }
-  .ir-btns { display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
-  .ir-btn { font-size: 10px; font-weight: 600; padding: 4px 10px; border: none; border-radius: 6px; cursor: pointer; color: #fff; }
-  .ir-btn.meet { background: #1a73e8; }
-  .ir-btn.teams { background: #6264a7; }
-  .ir-btn.done { background: #16a34a; }
-  .ir-btn.waiting { background: #f59e0b; color: #000; }
-  .ir-btn.undo { background: #334155; }
-  .status-chip { font-size: 10px; font-weight: 700; padding: 3px 10px; border-radius: 99px; display: none; }
-  .status-chip.done-chip { background: #16a34a20; color: #4ade80; border: 1px solid #16a34a; }
-  .status-chip.waiting-chip { background: #f59e0b20; color: #fbbf24; border: 1px solid #f59e0b; }
-
-  /* SECTION */
-  .section { margin-bottom: 18px; }
-  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #64748b; margin-bottom: 8px; display: flex; align-items: center; gap: 5px; }
-
-  /* CARD */
-  .card { background: #1e293b; border-radius: 12px; padding: 13px 14px; margin-bottom: 8px; border-left: 3px solid transparent; }
-  .card.urgent { border-left-color: #ef4444; }
-  .card.warning { border-left-color: #f59e0b; }
-  .card.success { border-left-color: #22c55e; }
-  .card.info { border-left-color: #60a5fa; }
-  .card.red-card { border-left-color: #ef4444; background: #1a1010; }
-  .card-title { font-size: 14px; font-weight: 600; color: #f1f5f9; }
-  .card-sub { font-size: 11px; color: #94a3b8; margin-top: 3px; }
-  .card-detail { font-size: 11px; color: #cbd5e1; margin-top: 7px; line-height: 1.6; }
-  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 7px; border-radius: 99px; margin: 3px 3px 0 0; }
-  .tag.red { background: #ef444420; color: #ef4444; }
-  .tag.green { background: #22c55e20; color: #22c55e; }
-  .tag.yellow { background: #f59e0b20; color: #f59e0b; }
-  .tag.blue { background: #60a5fa20; color: #60a5fa; }
-  .tag.purple { background: #a78bfa20; color: #a78bfa; }
-  .tag.orange { background: #f9731620; color: #f97316; }
-  .tag.gray { background: #47556920; color: #64748b; }
-  .countdown { font-size: 11px; font-weight: 700; color: #ef4444; background: #ef444415; border-radius: 6px; padding: 3px 9px; display: inline-block; margin-top: 5px; }
-  .action-btn { display: inline-block; margin-top: 7px; color: #fff; font-size: 11px; font-weight: 600; padding: 5px 11px; border-radius: 6px; text-decoration: none; margin-right: 5px; }
-  .action-btn.meet { background: #1a73e8; }
-  .action-btn.teams { background: #6264a7; }
-  .action-btn.wingfinder { background: #ef4444; }
-  blockquote { border-left: 2px solid #334155; padding-left: 9px; color: #94a3b8; font-style: italic; margin-top: 6px; font-size: 11px; line-height: 1.5; }
-
-  /* DONE TAB */
-  .done-card { background: #0d1a0d; border: 1px solid #1a3a1a; border-radius: 12px; padding: 12px 14px; margin-bottom: 8px; }
-  .done-card .dc-header { display: flex; align-items: center; justify-content: space-between; }
-  .done-card .dc-company { font-size: 13px; font-weight: 600; color: #86efac; }
-  .done-card .dc-chip { font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 99px; }
-  .done-card .dc-chip.done { background: #22c55e20; color: #4ade80; }
-  .done-card .dc-chip.waiting { background: #f59e0b20; color: #fbbf24; }
-  .done-card .dc-detail { font-size: 11px; color: #64748b; margin-top: 3px; }
-
-  /* RED TABLE */
-  .red-table { width: 100%; border-collapse: collapse; font-size: 11px; }
-  .red-table tr { border-bottom: 1px solid #1e293b; }
-  .red-table tr:last-child { border-bottom: none; }
-  .red-table td { padding: 7px 4px; vertical-align: top; }
-  .red-table td:first-child { width: 16px; font-size: 14px; }
-  .red-table .rt-company { font-weight: 600; color: #f87171; }
-  .red-table .rt-pos { color: #94a3b8; font-size: 10px; margin-top: 1px; }
-  .red-table .rt-date { color: #475569; font-size: 10px; white-space: nowrap; text-align: right; }
-  .red-table .rt-reason { color: #64748b; font-size: 10px; font-style: italic; margin-top: 2px; }
-
-  .footer { text-align: center; padding: 14px 0 6px; color: #334155; font-size: 10px; }
+  .stat.purple .stat-num { color: #c4b5fd; }
+  .dashboard-link { display: flex; align-items: center; gap: 8px; background: #1e3a5f; border: 1px solid #3b82f6; color: #93c5fd; font-size: 13px; font-weight: 600; padding: 12px 16px; border-radius: 11px; text-decoration: none; margin-bottom: 14px; }
+  .dashboard-link .arrow { margin-left: auto; font-size: 16px; }
+  .section { background: #1e293b; border-radius: 12px; padding: 14px; margin-bottom: 12px; }
+  .section-title { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.8px; color: #64748b; margin-bottom: 10px; }
+  .item { padding: 10px 0; border-bottom: 1px solid #0f172a; }
+  .item:last-child { border-bottom: none; padding-bottom: 0; }
+  .item-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 8px; }
+  .item-company { font-size: 10px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.5px; }
+  .item-title { font-size: 13px; font-weight: 600; color: #f1f5f9; margin-top: 2px; }
+  .item-date { font-size: 10px; color: #475569; white-space: nowrap; }
+  .item-note { font-size: 11px; color: #94a3b8; margin-top: 5px; line-height: 1.5; }
+  .tag { display: inline-block; font-size: 10px; font-weight: 600; padding: 2px 8px; border-radius: 99px; margin-top: 5px; margin-right: 3px; }
+  .tag.red { background: #ef444420; color: #f87171; }
+  .tag.green { background: #22c55e20; color: #4ade80; }
+  .tag.yellow { background: #f59e0b20; color: #fbbf24; }
+  .tag.blue { background: #3b82f620; color: #60a5fa; }
+  .tag.purple { background: #8b5cf620; color: #a78bfa; }
+  .tag.interview { background: #fbbf2420; color: #fcd34d; font-weight: 800; }
+  .tag.view { background: #6366f120; color: #818cf8; }
+  .empty { color: #475569; font-size: 12px; text-align: center; padding: 12px 0; }
+  .acil { border-left: 3px solid #f59e0b; padding-left: 10px; }
 </style>
 </head>
 <body>
 
 <div class="header">
-  <h1>Sabah Brifing <span class="badge-live">Güncel</span></h1>
-  <div class="date" id="currentDate"></div>
+  <h1>Sabah Brifing <span class="badge">Güncel</span></h1>
+  <div class="date">10 Haziran 2026 · Son 7 günün özeti</div>
 </div>
 
-<script>
-  const d = new Date();
-  const days = ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'];
-  const months = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
-  document.getElementById('currentDate').textContent = days[d.getDay()] + ', ' + d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
-</script>
-
-<!-- İSTATİSTİKLER -->
-<div class="stats-row">
-  <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
-  <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">19</div><div class="stat-label">Toplam Red (7 gün)</div></div>
-  <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
-  <div class="stat blue"><div class="stat-num">61</div><div class="stat-label">Profil Görüntüleme</div></div>
-  <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
+<div class="summary-row">
+  <div class="stat yellow"><div class="stat-num">2</div><div class="stat-label">Mülakat</div></div>
+  <div class="stat blue"><div class="stat-num">2</div><div class="stat-label">CV View</div></div>
+  <div class="stat green"><div class="stat-num">14</div><div class="stat-label">Yeni Başv.</div></div>
+  <div class="stat red"><div class="stat-num">3</div><div class="stat-label">Red</div></div>
+  <div class="stat purple"><div class="stat-num">8</div><div class="stat-label">Alarm</div></div>
 </div>
 
-<!-- DASHBOARD LİNKİ -->
 <a class="dashboard-link" href="LinkedIn_Onerileri_Dashboard.html">
-  <div>
-    <div class="dl-title">📋 İş İlanları Dashboard</div>
-    <div class="dl-sub">Tüm ilanlar, başvurular ve takip →</div>
-  </div>
-  <span style="font-size:18px">→</span>
+  📋 İş İlanları Dashboard — Tüm ilanları gör
+  <span class="arrow">→</span>
 </a>
 
-<!-- ANA TABS -->
-<div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
-  <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">19</span></button>
-  <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
-</div>
+<!-- AKSİYON GEREKTİREN -->
+<div class="section">
+  <div class="section-title">🎯 Aksiyon Gerektiren</div>
 
-<!-- ===== AKSİYON PANELİ ===== -->
-<div class="tab-panel active" id="panel-aksiyon">
-
-  <!-- MÜLAKAT KUTUSU -->
-  <div class="interview-box">
-    <div class="ib-title">🗓️ Bu Haftaki Mülakatlar</div>
-
-    <div class="interview-row" id="row-scorp">
+  <div class="item acil">
+    <div class="item-header">
       <div>
-        <div class="ir-date">8 Haz Pzt · 14:00–14:30</div>
-        <span class="countdown-chip" style="background:#ef444430;color:#ef4444">🔴 BUGÜN 14:00</span>
+        <div class="item-company">sahibinden.com</div>
+        <div class="item-title">✅ Mülakat Gerçekleşti — 9 Haz 11:00 Teams</div>
       </div>
-      <div class="ir-info">
-        <div class="ir-company">Scorp</div>
-        <div class="ir-pos">Marketing Data Analyst — Cemre Dandin</div>
-        <div class="ir-btns">
-          <span class="ir-platform">Google Meet</span>
-          <a class="ir-btn meet" href="https://meet.google.com/zzd-wcbq-pca" target="_blank">Meet'e Katıl</a>
-          <button class="ir-btn done" onclick="markInterview('scorp','done')">✓ Tamamlandı</button>
-          <button class="ir-btn waiting" onclick="markInterview('scorp','waiting')">⏳ Haber Bekleniyor</button>
-        </div>
-        <span class="status-chip done-chip" id="scorp-done">✓ Tamamlandı</span>
-        <span class="status-chip waiting-chip" id="scorp-waiting">⏳ Haber Bekleniyor</span>
-      </div>
+      <div class="item-date">9 Haz</div>
     </div>
+    <div class="item-note">Zeynep Demıralp ile Microsoft Teams görüşmesi tamamlandı. Dünyanın en büyük Türkçe içerikli platformu. Geri bildirim bekleniyor.</div>
+    <span class="tag interview">✅ Tamamlandı</span>
+  </div>
 
-    <div class="interview-row" id="row-sahibinden">
+  <div class="item acil">
+    <div class="item-header">
       <div>
-        <div class="ir-date">9 Haz Sal · 11:00–12:00</div>
-        <span class="countdown-chip" style="background:#f59e0b30;color:#fbbf24">⚡ YARIN 11:00</span>
+        <div class="item-company">Scorp</div>
+        <div class="item-title">✅ Mülakat Gerçekleşti — 8 Haz 14:00 Google Meet</div>
       </div>
-      <div class="ir-info">
-        <div class="ir-company">sahibinden.com</div>
-        <div class="ir-pos">Mülakat Daveti — Zeynep Demıralp</div>
-        <div class="ir-btns">
-          <span class="ir-platform">Microsoft Teams</span>
-          <a class="ir-btn teams" href="https://teams.microsoft.com/l/meetup-join/19%3ameeting_YWYyZDQxOTItMTk1OS00ZTQyLThmODMtYmI1MGM0ZTE4NDNh%40thread.v2/0" target="_blank">Teams'e Katıl</a>
-          <button class="ir-btn done" onclick="markInterview('sahibinden','done')">✓ Tamamlandı</button>
-          <button class="ir-btn waiting" onclick="markInterview('sahibinden','waiting')">⏳ Haber Bekleniyor</button>
-        </div>
-        <span class="status-chip done-chip" id="sahibinden-done">✓ Tamamlandı</span>
-        <span class="status-chip waiting-chip" id="sahibinden-waiting">⏳ Haber Bekleniyor</span>
-      </div>
+      <div class="item-date">8 Haz</div>
     </div>
+    <div class="item-note">Marketing Data Analyst — Cemre Dandin ile görüşme tamamlandı. Geri bildirim bekleniyor.</div>
+    <span class="tag interview">✅ Tamamlandı</span>
   </div>
 
-  <!-- DİĞER AKSİYONLAR -->
-  <div class="section">
-    <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
-
-    <div class="card urgent" id="aksiyon-wingfinder">
-      <div class="card-title">Red Bull Wingfinder — Strategic Partnership Manager</div>
-      <div class="card-sub">wingfinder@career.redbull.com · 4 Haziran 2026</div>
-      <div class="countdown">Süre geçmiş — kişisel linkle hâlâ tamamlanabilir</div>
-      <div class="card-detail">Tamamlandıktan sonra sonuçlar başvuruya otomatik ekleniyor.</div>
-      <span class="tag orange">Acil</span>
-      <span class="tag purple">Strategic Partnership Manager</span><br>
-      <a class="action-btn wingfinder" href="https://www.wingfinder.com/invite/P_uFNRFuc2P6jCrNPVm84DS-mZ9nkp56d2hmAF9NZCR14vFJnbv0hIXauAhZLMKf" target="_blank">Wingfinder'ı Tamamla →</a>
-      <button onclick="doneAksiyon('wingfinder')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
-    </div>
-
-    <div class="card warning" id="aksiyon-tiktok">
-      <div class="card-title">TikTok LIVE — Partner Growth & Incubation Manager (Turkey)</div>
-      <div class="card-sub">jobs-noreply@linkedin.com · 3 Haziran — Başvuru hata verdi</div>
-      <div class="card-detail">LinkedIn başvurusu iletilemedi. Tekrar denemen gerekiyor.</div>
-      <span class="tag red">Başvuru İletilmedi</span>
-      <span class="tag yellow">Tekrar Başvur</span><br>
-      <a class="action-btn meet" href="https://www.linkedin.com/jobs/view/4423911732/" target="_blank" style="background:#f97316">LinkedIn'de Aç →</a>
-      <button onclick="doneAksiyon('tiktok')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
-    </div>
-
-    <div class="card warning" id="aksiyon-garanti">
-      <div class="card-title">Garanti BBVA — Büyüme ve Müşteri Kazanımı Associate/Lead 🔥</div>
-      <div class="card-sub">Alarm ilanı · 5 Haziran 2026</div>
-      <div class="card-detail">Senin Turkcell Senior Acquisition & Growth Manager geçmişinle TAM UYUM. Henüz başvurulmadıysa hızlıca başvur.</div>
-      <span class="tag green">⭐⭐⭐⭐⭐ Tam Uyum</span>
-      <span class="tag blue">Garanti BBVA</span><br>
-      <a class="action-btn meet" href="https://www.linkedin.com/jobs/view/4422905005/" target="_blank" style="background:#22c55e">Hemen Başvur →</a>
-      <button onclick="doneAksiyon('garanti')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
-    </div>
-  </div>
-
-</div>
-
-<!-- ===== PROFİL PANELİ ===== -->
-<div class="tab-panel" id="panel-profil">
-  <div class="section">
-    <div class="section-title"><span>👁️</span> Son 7 Günde CV'ni Görüntüleyenler</div>
-
-    <div class="card info">
-      <table style="width:100%;border-collapse:collapse;font-size:12px;">
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">QNB Türkiye</td>
-          <td style="padding:6px 4px;color:#94a3b8">Growth Marketing Manager başvurusu görüntülendi 👀</td>
-          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">8 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Enpara.com</td>
-          <td style="padding:6px 4px;color:#94a3b8">Brand Partnerships & Merchant Relations Executive başvurusu görüntülendi 👀</td>
-          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">8 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Carla</td>
-          <td style="padding:6px 4px;color:#94a3b8">Senior Product Manager başvurusu görüntülendi</td>
-          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">8 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#94a3b8">OPPO Türkiye</td>
-          <td style="padding:6px 4px;color:#94a3b8">Senior Digital Marketing Manager CV görüntülendi</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">7 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#94a3b8">Derimod</td>
-          <td style="padding:6px 4px;color:#94a3b8">CRM Campaign & Loyalty Lead görüntülendi</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">6 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Tıkla Gelsin</td>
-          <td style="padding:6px 4px;color:#94a3b8">Başvurudan hemen sonra görüntüledi 👀</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">5 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Apollo</td>
-          <td style="padding:6px 4px;color:#94a3b8">CV görüntülendi — ilgi var!</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">5 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">getirfinans</td>
-          <td style="padding:6px 4px;color:#94a3b8">Başvurudan aynı gün görüntüledi!</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">4 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">DIGIVEGA® · DICE · Mojo</td>
-          <td style="padding:6px 4px;color:#94a3b8">CV görüntülendi</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">4 Haz</td>
-        </tr>
-        <tr>
-          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">ARVEN · Eczacıbaşı</td>
-          <td style="padding:6px 4px;color:#94a3b8">CV görüntülendi</td>
-          <td style="padding:6px 4px;color:#475569;white-space:nowrap">2-4 Haz</td>
-        </tr>
-      </table>
-    </div>
-
-    <div class="section">
-      <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
-      <div class="card info">
-        <div class="card-detail">
-          <strong>7-8 Haziran:</strong> idefix · ING Türkiye (3.) · Pazarama (Sr Campaign Mgmt Specialist)<br><br>
-          <strong>5-6 Haziran:</strong> QNB Türkiye (4.) · Pine Games · Setur (Kategori Uzmanı) · Jollify Games (Sr UA Manager) · n11 · TAV · Hepsiburada · ING (2.) · Skechers · Beymen · Gratis · ZÜBER<br><br>
-          <strong>4 Haziran:</strong> Mavi · Migros · OPPO · BtcTurk · getirfinans · ING (1.) · Sigortam.net<br>
-          <em>Kurumsal platform:</em> Peak · Yemeksepeti · Scorp · Amazon · Obilet · Siemens ✅
-        </div>
-        <span class="tag green">Toplam 30+ başvuru (son 5 gün)</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- ===== REDLER PANELİ ===== -->
-<div class="tab-panel" id="panel-redler">
-  <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (19 adet) — en yeni üstte</div>
-
-    <div class="card red-card">
-      <table class="red-table">
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Mobven</div>
-            <div class="rt-pos">Pozisyon (mobven@mail.gethirex.com)</div>
-            <div class="rt-reason">"Bu aşamada mevcut pozisyon için sizinle ilerleyemeyeceğimizi üzülerek paylaşmak istiyoruz."</div>
-          </td>
-          <td class="rt-date">8 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Adapty / FunnelFox</div>
-            <div class="rt-pos">Customer Success Manager — Angelina Khannova</div>
-            <div class="rt-reason">"Unfortunately, this time round we felt there were some others who'd be better suited." — PeopleForce HR</div>
-          </td>
-          <td class="rt-date">8 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Trendyol</div>
-            <div class="rt-pos">Pozisyon (hire.lever.co)</div>
-            <div class="rt-reason">"After reviewing your work and experience, we regret to inform you that we will not be moving forward."</div>
-          </td>
-          <td class="rt-date">8 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Carla</div>
-            <div class="rt-pos">Senior Product Manager</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">8 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">OPPO Türkiye</div>
-            <div class="rt-pos">Senior Digital Marketing Manager</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">7 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Amazon</div>
-            <div class="rt-pos">Marketing Manager (Amazon Seller Services)</div>
-            <div class="rt-reason">"After careful consideration and review of your application, we have decided to move forward with other candidates." — Amazon Recruiting</div>
-          </td>
-          <td class="rt-date">6 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">adidas</div>
-            <div class="rt-pos">Senior Specialist Trade Marketing / Retail Marketing</div>
-            <div class="rt-reason">"After careful consideration, we've decided not to move forward with your application." — adidas Recruiting</div>
-          </td>
-          <td class="rt-date">6 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Derimod</div>
-            <div class="rt-pos">CRM Campaign &amp; Loyalty Lead</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">6 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Jollify Games</div>
-            <div class="rt-pos">Senior UA Manager (Mobile Games)</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">6 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Setur</div>
-            <div class="rt-pos">Kategori Uzmanı</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">5 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">TEB</div>
-            <div class="rt-pos">İş Analisti (Ticari Bankacılık Geliştirme Takımları)</div>
-            <div class="rt-reason">LinkedIn red bildirimi (görsel içerikli)</div>
-          </td>
-          <td class="rt-date">5 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">TradingView</div>
-            <div class="rt-pos">Growth Manager - Turkey</div>
-            <div class="rt-reason">"After carefully reviewing... we are unable to move forward at this time." — Antonia Maria Diaz</div>
-          </td>
-          <td class="rt-date">5 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">LEGO® Careers</div>
-            <div class="rt-pos">Associate eCommerce Marketing Manager</div>
-            <div class="rt-reason">"We've decided to move forward with applicants who were a slightly better match."</div>
-          </td>
-          <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Acronis</div>
-            <div class="rt-pos">Senior Partner Success Manager</div>
-            <div class="rt-reason">"Unfortunately, we will not be moving forward with your candidacy at this time." — Talent Team</div>
-          </td>
-          <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">ING Türkiye</div>
-            <div class="rt-pos">Digital Marketing Expert</div>
-            <div class="rt-reason">LinkedIn red bildirimi (görsel içerikli)</div>
-          </td>
-          <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">Tein Technology</div>
-            <div class="rt-pos">Ecosystem &amp; Partnerships Manager</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">ANDEVOS Bilgi Teknolojileri</div>
-            <div class="rt-pos">İş Analisti</div>
-            <div class="rt-reason">LinkedIn red bildirimi</div>
-          </td>
-          <td class="rt-date">4 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">LG Electronics Türkiye</div>
-            <div class="rt-pos">Assistant Product Manager</div>
-            <div class="rt-reason">LinkedIn red bildirimi (görsel içerikli)</div>
-          </td>
-          <td class="rt-date">3 Haz</td>
-        </tr>
-        <tr>
-          <td>❌</td>
-          <td>
-            <div class="rt-company">LEGO® Careers</div>
-            <div class="rt-pos">Analytics &amp; Insights Partner</div>
-            <div class="rt-reason">"We've decided to move forward with applicants who were a slightly better match."</div>
-          </td>
-          <td class="rt-date">2 Haz</td>
-        </tr>
-      </table>
-    </div>
-
-    <div style="font-size:10px;color:#334155;padding:4px">
-      LinkedIn görsel redlerde neden red aldığın belirtilmiyor. Kişisel red maillerinde (TradingView, LEGO, Acronis) neden bilgisi yer alıyor.
-    </div>
-  </div>
-</div>
-
-<!-- ===== TAMAMLANANLAR PANELİ ===== -->
-<div class="tab-panel" id="panel-done">
-  <div class="section">
-    <div class="section-title"><span>✅</span> Tamamlanan / Haber Bekleniyor</div>
-    <div id="done-list">
-      <div style="text-align:center;color:#475569;padding:30px 0;font-size:13px;">
-        Henüz tamamlanan mülakat yok.<br>
-        <span style="font-size:11px">Aksiyon sekmesindeki mülakatları tamamladıktan sonra buraya taşınacak.</span>
-      </div>
-    </div>
-
-    <!-- Siemens tamamlandı (önceden) -->
-    <div class="done-card">
-      <div class="dc-header">
-        <div>
-          <div class="dc-company">Siemens — Service Marketing Product Manager (EDU support) #504198</div>
-          <div class="dc-detail">4 Haziran 2026 · Başvuru tamamlandı, onay alındı ✅</div>
-        </div>
-        <span class="dc-chip waiting">⏳ Haber Bekleniyor</span>
-      </div>
-    </div>
-
-    <div class="done-card">
-      <div class="dc-header">
-        <div>
-          <div class="dc-company">Red Bull — Wingfinder Tamamlandı</div>
-          <div class="dc-detail">3 Haziran 2026 · Passport ve Report mail ekinde. Sonuçlar başvurulara eklendi.</div>
-        </div>
-        <span class="dc-chip done">✓ Tamamlandı</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div class="footer">Son güncelleme: 8 Haziran 2026 18:00 · Claude tarafından oluşturuldu</div>
-
-<script>
-function showTab(name, el) {
-  document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-  document.querySelectorAll('.main-tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('panel-' + name).classList.add('active');
-  el.classList.add('active');
-}
-
-function doneAksiyon(id) {
-  localStorage.setItem('done_aksiyon_' + id, '1');
-  const el = document.getElementById('aksiyon-' + id);
-  if (el) { el.style.transition = 'opacity 0.3s'; el.style.opacity = '0'; setTimeout(() => el.style.display = 'none', 300); }
-}
-
-function loadAksiyonStates() {
-  ['wingfinder','tiktok','garanti'].forEach(id => {
-    if (localStorage.getItem('done_aksiyon_' + id)) {
-      const el = document.getElementById('aksiyon-' + id);
-      if (el) el.style.display = 'none';
-    }
-  });
-}
-
-window.addEventListener('DOMContentLoaded', loadAksiyonStates);
-
-const INTERVIEW_STATES = JSON.parse(localStorage.getItem('interviewStates') || '{}');
-
-function markInterview(id, state) {
-  INTERVIEW_STATES[id] = state;
-  localStorage.setItem('interviewStates', JSON.stringify(INTERVIEW_STATES));
-  applyInterviewStates();
-  if (state === 'done' || state === 'waiting') {
-    moveToDoneTab(id, state);
-  }
-}
-
-function applyInterviewStates() {
-  ['scorp', 'sahibinden'].forEach(id => {
-    const state = INTERVIEW_STATES[id];
-    document.getElementById(id + '-done').style.display = state === 'done' ? 'inline-block' : 'none';
-    document.getElementById(id + '-waiting').style.display = state === 'waiting' ? 'inline-block' : 'none';
-    const row = document.getElementById('row-' + id);
-    if (row) row.style.opacity = (state === 'done' || state === 'waiting') ? '0.5' : '1';
-  });
-
-  // Update done tab count
-  const doneCount = Object.values(INTERVIEW_STATES).filter(v => v === 'done' || v === 'waiting').length;
-  document.querySelector('.done-tab .tab-count').textContent = doneCount;
-}
-
-function moveToDoneTab(id, state) {
-  const companies = {
-    scorp: { name: 'Scorp', pos: 'Marketing Data Analyst', date: '8 Haz 2026' },
-    sahibinden: { name: 'sahibinden.com', pos: 'Mülakat Daveti', date: '9 Haz 2026' }
-  };
-  const info = companies[id];
-  if (!info) return;
-
-  const existing = document.getElementById('done-' + id);
-  if (existing) existing.remove();
-
-  document.querySelector('#done-list .empty-msg')?.remove();
-
-  const emptyMsg = document.querySelector('#done-list > div:first-child');
-  if (emptyMsg && emptyMsg.style.textAlign === 'center') emptyMsg.remove();
-
-  const el = document.createElement('div');
-  el.className = 'done-card';
-  el.id = 'done-' + id;
-  el.innerHTML = `
-    <div class="dc-header">
+  <div class="item acil">
+    <div class="item-header">
       <div>
-        <div class="dc-company">${info.name} — ${info.pos}</div>
-        <div class="dc-detail">${info.date} · Güncellendi</div>
+        <div class="item-company">n11 — YENİ ALARM</div>
+        <div class="item-title">Product Owner — Henüz Başvurulmadı!</div>
       </div>
-      <span class="dc-chip ${state === 'done' ? 'done' : 'waiting'}">${state === 'done' ? '✓ Tamamlandı' : '⏳ Haber Bekleniyor'}</span>
+      <div class="item-date">9 Haz</div>
     </div>
-    <button onclick="undoInterview('${id}')" style="margin-top:6px;font-size:10px;background:#334155;color:#94a3b8;border:none;padding:3px 8px;border-radius:5px;cursor:pointer">↩ Geri Al</button>
-  `;
-  document.getElementById('done-list').prepend(el);
-}
+    <div class="item-note">⭐⭐⭐⭐⭐ TAM UYUM — n11 eski işverensın, insider geçmişin var. Bu pozisyona hızla başvur!</div>
+    <span class="tag yellow">🔥 Acil Başvur</span>
+  </div>
 
-function undoInterview(id) {
-  delete INTERVIEW_STATES[id];
-  localStorage.setItem('interviewStates', JSON.stringify(INTERVIEW_STATES));
-  document.getElementById('done-' + id)?.remove();
-  applyInterviewStates();
-}
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">TEB Yatırım | BNP Paribas</div>
+        <div class="item-title">Corporate Finance Manager — Henüz Başvurulmadı</div>
+      </div>
+      <div class="item-date">9 Haz</div>
+    </div>
+    <div class="item-note">QNB finansal geçmişin bu role güçlü aday yapıyor. Alarm ilanı, başvuru yapılmadı.</div>
+    <span class="tag yellow">🔔 Başvur</span>
+  </div>
 
-applyInterviewStates();
-</script>
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">Obilet</div>
+        <div class="item-title">⚠️ 2. Başvuru — Digital Marketing Specialist</div>
+      </div>
+      <div class="item-date">9 Haz</div>
+    </div>
+    <div class="item-note">4 Haz'de "Strategic Planning & Business Specialist"a başvurmuştun. Bu farklı pozisyon. Kurumsal onay maili (Recruitee) geldi — sorun yok.</div>
+    <span class="tag blue">✅ Kurumsal Onay</span>
+  </div>
+
+</div>
+
+<!-- CV VIEW -->
+<div class="section">
+  <div class="section-title">👁️ CV Görüntülemeler (Son 7 Gün)</div>
+
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">Digipeak Agency</div>
+        <div class="item-title">Başvurun görüntülendi</div>
+      </div>
+      <div class="item-date">9 Haz 19:35</div>
+    </div>
+    <div class="item-note">Dijital pazarlama ajansı. CV görüntülendikten sonra aynı gün yeni başvuru da gönderildi.</div>
+    <span class="tag view">👁️ CV Görüntülendi</span>
+  </div>
+
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">Pine Games</div>
+        <div class="item-title">Başvurun görüntülendi</div>
+      </div>
+      <div class="item-date">9 Haz 16:00</div>
+    </div>
+    <div class="item-note">Oyun sektörü — 5 Haz başvurusundan 4 gün sonra CV görüntülendi. İlgi var.</div>
+    <span class="tag view">👁️ CV Görüntülendi</span>
+  </div>
+
+</div>
+
+<!-- RED -->
+<div class="section">
+  <div class="section-title">❌ Red & Sonuçlar (Yeniden Eskiye)</div>
+
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">MUDO</div>
+        <div class="item-title">Pazarlama & Kurumsal İletişim Uzmanı</div>
+      </div>
+      <div class="item-date">9 Haz</div>
+    </div>
+    <div class="item-note">LinkedIn red bildirimi. "MUDO şirketindeki Pazarlama & Kurumsal İletişim Uzmanı başvurunuz" konulu mail.</div>
+    <span class="tag red">❌ Red</span>
+  </div>
+
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">Setur</div>
+        <div class="item-title">Kategori Uzmanı</div>
+      </div>
+      <div class="item-date">5 Haz</div>
+    </div>
+    <div class="item-note">LinkedIn red bildirimi. Koç Holding bünyesi seyahat/turizm şirketi.</div>
+    <span class="tag red">❌ Red</span>
+  </div>
+
+  <div class="item">
+    <div class="item-header">
+      <div>
+        <div class="item-company">ING Türkiye</div>
+        <div class="item-title">Digital Marketing Expert (1. başvuru)</div>
+      </div>
+      <div class="item-date">4 Haz</div>
+    </div>
+    <div class="item-note">LinkedIn red bildirimi. ING'ye sonradan 2 farklı pozisyon daha başvurdun.</div>
+    <span class="tag red">❌ Red</span>
+  </div>
+
+</div>
+
+<!-- YENİ ALARMLAR -->
+<div class="section">
+  <div class="section-title">🔔 Bu Haftanın Yeni Alarm İlanları (8-10 Haz)</div>
+
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">Miele</div><div class="item-title">Project Sales Specialist</div></div><div class="item-date">10 Haz</div></div>
+    <div class="item-note">Alman premium ev aletleri markası. Proje satış + B2B.</div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">n11</div><div class="item-title">Product Owner ⭐⭐⭐⭐⭐</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag yellow">🔥 Acil</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">DenizBank</div><div class="item-title">DenizYatırım Performans ve Dijital Kanallar Satış Uzmanı</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">TEB Yatırım | BNP Paribas</div><div class="item-title">Corporate Finance Manager</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">Coffy</div><div class="item-title">Sr. Marketing Specialist</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">Ticimax</div><div class="item-title">Satış Uzmanı</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">Trendyol Group</div><div class="item-title">Global Payment Leaders</div></div><div class="item-date">9 Haz</div></div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+  <div class="item">
+    <div class="item-header"><div><div class="item-company">Nestlé</div><div class="item-title">Brand Manager</div></div><div class="item-date">8 Haz</div></div>
+    <div class="item-note">Global FMCG devi — brand management rolü.</div>
+    <span class="tag purple">🔔 Alarm</span>
+  </div>
+
+</div>
+
+<!-- YENİ BAŞVURULAR -->
+<div class="section">
+  <div class="section-title">📩 Bu Haftanın Yeni Başvuruları (8-9 Haz)</div>
+
+  <div class="item"><div class="item-header"><div><div class="item-company">DIGIVEGA®</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">Yataş Grup</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">Grafton</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">Tam Finans</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">Bitexen</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">PayTR</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">9 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">H&M</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">8 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">IPEKYOL GROUP</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">8 Haz</div></div><span class="tag green">📩</span></div>
+  <div class="item"><div class="item-header"><div><div class="item-company">Vivense</div><div class="item-title">Başvuru Gönderildi</div></div><div class="item-date">8 Haz</div></div><span class="tag green">📩</span></div>
+
+</div>
 
 </body>
 </html>
