@@ -657,7 +657,7 @@ function buildCard(j) {
       ${intTag}${qnbTag}${scrTag}
     </div>
     <div class="card-bottom">
-      <a class="view-btn" href="${j.url}" target="_blank">Görüntüle →</a>
+      <a class="view-btn" href="${j.url}">Görüntüle →</a>
       <select class="status-select status-${status}"
         onchange="setStatus(${j.id},this.value);this.className='status-select status-'+this.value">
         <option value="incelenecek" ${status==='incelenecek'?'selected':''}>İncelenecek</option>
