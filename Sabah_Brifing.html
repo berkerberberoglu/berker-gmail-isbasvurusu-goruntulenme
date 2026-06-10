@@ -599,22 +599,30 @@ const INTERVIEW_STATES = JSON.parse(localStorage.getItem('interviewStates') || '
 function markInterview(id, state) {
   INTERVIEW_STATES[id] = state;
   localStorage.setItem('interviewStates', JSON.stringify(INTERVIEW_STATES));
-  applyInterviewStates();
-  if (state === 'done' || state === 'waiting') {
-    moveToDoneTab(id, state);
+  // Satırı interview box'tan kaldır
+  const row = document.getElementById('row-' + id);
+  if (row) {
+    row.style.transition = 'opacity 0.3s';
+    row.style.opacity = '0';
+    setTimeout(() => { row.style.display = 'none'; }, 300);
   }
+  moveToDoneTab(id, state);
+  updateDoneTabCount();
 }
 
 function applyInterviewStates() {
   ['scorp', 'sahibinden'].forEach(id => {
     const state = INTERVIEW_STATES[id];
-    document.getElementById(id + '-done').style.display = state === 'done' ? 'inline-block' : 'none';
-    document.getElementById(id + '-waiting').style.display = state === 'waiting' ? 'inline-block' : 'none';
-    const row = document.getElementById('row-' + id);
-    if (row) row.style.opacity = (state === 'done' || state === 'waiting') ? '0.5' : '1';
+    if (state === 'done' || state === 'waiting') {
+      const row = document.getElementById('row-' + id);
+      if (row) row.style.display = 'none';
+      moveToDoneTab(id, state);
+    }
   });
+  updateDoneTabCount();
+}
 
-  // Update done tab count
+function updateDoneTabCount() {
   const doneCount = Object.values(INTERVIEW_STATES).filter(v => v === 'done' || v === 'waiting').length;
   document.querySelector('.done-tab .tab-count').textContent = doneCount;
 }
