@@ -135,7 +135,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">22</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">24</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -154,7 +154,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">22</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">24</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -270,16 +270,6 @@
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">10 Haz</td>
         </tr>
         <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">FLO Group</td>
-          <td style="padding:6px 4px;color:#94a3b8">CV görüntülendi 👀</td>
-          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">10 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
-          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">ING Türkiye</td>
-          <td style="padding:6px 4px;color:#94a3b8">CV görüntülendi 👀</td>
-          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">10 Haz</td>
-        </tr>
-        <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Digipeak Agency</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">9 Haz</td>
@@ -361,10 +351,28 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (22 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (24 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">FLO Group</div>
+            <div class="rt-pos">Ürün Uzmanı — LinkedIn red bildirimi</div>
+            <div class="rt-reason">"FLO Group şirketinden güncellemeleriniz" — application_rejected</div>
+          </td>
+          <td class="rt-date">10 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">ING Türkiye</div>
+            <div class="rt-pos">Business Banking-Digital Marketing, Payment and Digital Tribe Lead</div>
+            <div class="rt-reason">"ING Türkiye şirketinden güncellemeleriniz" — application_rejected</div>
+          </td>
+          <td class="rt-date">10 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
