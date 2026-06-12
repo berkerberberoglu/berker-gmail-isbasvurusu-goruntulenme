@@ -138,7 +138,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">24</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">27</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -157,7 +157,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">24</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">27</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -263,6 +263,21 @@
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Miele</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">12 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Ödeal</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">11 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">idefix</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">11 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">GoWit Technology</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">10 Haz</td>
@@ -339,7 +354,8 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
-          <strong>10-11 Haziran:</strong> FLO Group (Ürün Uzmanı) · ING Türkiye (4. - Business Banking-Digital Marketing, Payment and Digital Tribe Lead) · Tera Bank · Misli · ASICS · Alshaya Group Türkiye · Saat ve Saat · Gratis (2.) · Ace Games · Rossmann Türkiye · Bupa Türkiye · Bug.AI · Jobgether · Adecco · Alternatif Bank · Migros Ticaret (2.) · Hayat · Tarfin · Lucida AI · DenizBank · Miele · Redington Turkey · Beymen Group (2.) · MoneyPay · Sütaş Grubu · ASUS<br><br>
+          <strong>12 Haziran:</strong> ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
+          <strong>10-11 Haziran:</strong> FLO Group (Ürün Uzmanı) · ING Türkiye (4. - Business Banking-Digital Marketing, Payment and Digital Tribe Lead) · Tera Bank · Misli · ASICS · Alshaya Group Türkiye · Saat ve Saat · Gratis (2.) · Ace Games · Rossmann Türkiye · Bupa Türkiye · Bug.AI · Jobgether · Adecco · Alternatif Bank · Migros Ticaret (2.) · Hayat · Tarfin · Lucida AI · DenizBank · Miele · Redington Turkey · Beymen Group (2.) · MoneyPay · Sütaş Grubu · ASUS · Nobel İlaç A.Ş<br><br>
           <strong>7-8 Haziran:</strong> idefix · ING Türkiye (3.) · Pazarama (Sr Campaign Mgmt Specialist)<br><br>
           <strong>5-6 Haziran:</strong> QNB Türkiye (4.) · Pine Games · Setur (Kategori Uzmanı) · Jollify Games (Sr UA Manager) · n11 · TAV · Hepsiburada · ING (2.) · Skechers · Beymen · Gratis · ZÜBER<br><br>
           <strong>4 Haziran:</strong> Mavi · Migros · OPPO · BtcTurk · getirfinans · ING (1.) · Sigortam.net<br>
@@ -354,10 +370,37 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (24 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (27 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">H&amp;M</div>
+            <div class="rt-pos">Commercial Space Business Analyst</div>
+            <div class="rt-reason">"Language requirements for this position weren't fully met." — notifications@career.hmgroup.com</div>
+          </td>
+          <td class="rt-date">12 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Red Bull</div>
+            <div class="rt-pos">Strategic Partnership Manager</div>
+            <div class="rt-reason">"We have decided not to move forward with your application at this time." — notifications@career.redbull.com</div>
+          </td>
+          <td class="rt-date">11 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Midas</div>
+            <div class="rt-pos">Başvuru (Lever)</div>
+            <div class="rt-reason">"Uygun bir fırsat olması durumunda seninle iletişime geçeceğiz." — Soft red</div>
+          </td>
+          <td class="rt-date">11 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -635,7 +678,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 11 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 12 Haziran 2026 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
