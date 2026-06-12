@@ -136,7 +136,7 @@
 
 <!-- İSTATİSTİKLER -->
 <div class="stats-row">
-  <div class="stat red"><div class="stat-num">2</div><div class="stat-label">Mülakat Bu Hafta</div></div>
+  <div class="stat red"><div class="stat-num">3</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
   <div class="stat red"><div class="stat-num" id="redCount">27</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
@@ -203,6 +203,25 @@
         </div>
         <span class="status-chip done-chip" id="sahibinden-done">✓ Tamamlandı</span>
         <span class="status-chip waiting-chip" id="sahibinden-waiting">⏳ Haber Bekleniyor</span>
+      </div>
+    </div>
+
+    <div class="interview-row" id="row-sahibinden2">
+      <div>
+        <div class="ir-date">Tarih: .ics ekte · 11 Haz'de geldi</div>
+        <span class="countdown-chip" style="background:#f59e0b30;color:#f59e0b">🆕 YENİ DAVET</span>
+      </div>
+      <div class="ir-info">
+        <div class="ir-company">sahibinden.com — 2. Görüşme</div>
+        <div class="ir-pos">Tanışma · Kıdemli Kurumsal Gelir ve Segment Yönetimi Uzmanı — Zeynep Demiralp</div>
+        <div class="ir-btns">
+          <span class="ir-platform">Microsoft Teams</span>
+          <a class="ir-btn teams" href="https://teams.microsoft.com/meet/356914293145457?p=zo5pUxPHblPy6kWUAT">Teams'e Katıl</a>
+          <button class="ir-btn done" onclick="markInterview('sahibinden2','done')">✓ Tamamlandı</button>
+          <button class="ir-btn waiting" onclick="markInterview('sahibinden2','waiting')">⏳ Haber Bekleniyor</button>
+        </div>
+        <span class="status-chip done-chip" id="sahibinden2-done">✓ Tamamlandı</span>
+        <span class="status-chip waiting-chip" id="sahibinden2-waiting">⏳ Haber Bekleniyor</span>
       </div>
     </div>
   </div>
