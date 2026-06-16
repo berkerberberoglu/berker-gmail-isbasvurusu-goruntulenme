@@ -136,9 +136,9 @@
 
 <!-- İSTATİSTİKLER -->
 <div class="stats-row">
-  <div class="stat red"><div class="stat-num">3</div><div class="stat-label">Mülakat Bu Hafta</div></div>
+  <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">27</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">30</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -155,9 +155,9 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">3</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">4</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">27</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">30</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -224,6 +224,25 @@
         <span class="status-chip waiting-chip" id="sahibinden2-waiting">⏳ Haber Bekleniyor</span>
       </div>
     </div>
+
+    <div class="interview-row" id="row-yemeksepeti">
+      <div>
+        <div class="ir-date">17 Haz Çar · 14:00 GMT+3</div>
+        <span class="countdown-chip" style="background:#ef444430;color:#ef4444">🔥 YARIN!</span>
+      </div>
+      <div class="ir-info">
+        <div class="ir-company">Yemeksepeti</div>
+        <div class="ir-pos">Marketing Campaigns Executive — Beyza Yıldız (SmartRecruiters)</div>
+        <div class="ir-btns">
+          <span class="ir-platform">Google Meet</span>
+          <a class="ir-btn meet" href="https://meet.google.com/ykp-svei-vpr">Meet'e Katıl</a>
+          <button class="ir-btn done" onclick="markInterview('yemeksepeti','done')">✓ Tamamlandı</button>
+          <button class="ir-btn waiting" onclick="markInterview('yemeksepeti','waiting')">⏳ Haber Bekleniyor</button>
+        </div>
+        <span class="status-chip done-chip" id="yemeksepeti-done">✓ Tamamlandı</span>
+        <span class="status-chip waiting-chip" id="yemeksepeti-waiting">⏳ Haber Bekleniyor</span>
+      </div>
+    </div>
   </div>
 
   <!-- DİĞER AKSİYONLAR -->
@@ -281,6 +300,36 @@
 
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">n11</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">16 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Pine Games</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">15 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Cityberry® Travel Technologies</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">15 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Hype</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">15 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Hayat Finans</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">15 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Pandastic Studio</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">13 Haz</td>
+        </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Miele</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
@@ -373,7 +422,7 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
-          <strong>12 Haziran:</strong> ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
+          <strong>12-16 Haziran:</strong> n11 (16 Haz) · Jolly Tur · Enterprise Türkiye · Pandastic Studio · Boyner Büyük Mağazacılık · Hype · Cityberry® Travel Technologies · Groupe SEB · QNB Türkiye (5. kez ⚠️) · ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
           <strong>10-11 Haziran:</strong> FLO Group (Ürün Uzmanı) · ING Türkiye (4. - Business Banking-Digital Marketing, Payment and Digital Tribe Lead) · Tera Bank · Misli · ASICS · Alshaya Group Türkiye · Saat ve Saat · Gratis (2.) · Ace Games · Rossmann Türkiye · Bupa Türkiye · Bug.AI · Jobgether · Adecco · Alternatif Bank · Migros Ticaret (2.) · Hayat · Tarfin · Lucida AI · DenizBank · Miele · Redington Turkey · Beymen Group (2.) · MoneyPay · Sütaş Grubu · ASUS · Nobel İlaç A.Ş<br><br>
           <strong>7-8 Haziran:</strong> idefix · ING Türkiye (3.) · Pazarama (Sr Campaign Mgmt Specialist)<br><br>
           <strong>5-6 Haziran:</strong> QNB Türkiye (4.) · Pine Games · Setur (Kategori Uzmanı) · Jollify Games (Sr UA Manager) · n11 · TAV · Hepsiburada · ING (2.) · Skechers · Beymen · Gratis · ZÜBER<br><br>
@@ -389,10 +438,37 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (27 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (30 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">TOFAŞ</div>
+            <div class="rt-pos">Fiat Ürün Yönetmeni</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected</div>
+          </td>
+          <td class="rt-date">16 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">DIGIVEGA® · DICE · Mojo</div>
+            <div class="rt-pos">Performance Marketing &amp; Growth Specialist</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected</div>
+          </td>
+          <td class="rt-date">14 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Digipeak Agency</div>
+            <div class="rt-pos">Senior Performance Marketing &amp; App Growth Specialist</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected</div>
+          </td>
+          <td class="rt-date">14 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -697,7 +773,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 12 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 16 Haziran 2026 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
@@ -741,7 +817,7 @@ function markInterview(id, state) {
 }
 
 function applyInterviewStates() {
-  ['scorp', 'sahibinden'].forEach(id => {
+  ['scorp', 'sahibinden', 'sahibinden2', 'yemeksepeti'].forEach(id => {
     const state = INTERVIEW_STATES[id];
     if (state === 'done' || state === 'waiting') {
       const row = document.getElementById('row-' + id);
@@ -760,7 +836,9 @@ function updateDoneTabCount() {
 function moveToDoneTab(id, state) {
   const companies = {
     scorp: { name: 'Scorp', pos: 'Marketing Data Analyst', date: '8 Haz 2026' },
-    sahibinden: { name: 'sahibinden.com', pos: 'Mülakat Daveti', date: '9 Haz 2026' }
+    sahibinden: { name: 'sahibinden.com', pos: 'Mülakat Daveti', date: '9 Haz 2026' },
+    sahibinden2: { name: 'sahibinden.com — 2. Görüşme', pos: 'Tanışma · Kıdemli Kurumsal Gelir ve Segment Yönetimi Uzmanı', date: '11 Haz 2026' },
+    yemeksepeti: { name: 'Yemeksepeti', pos: 'Marketing Campaigns Executive', date: '17 Haz 2026' }
   };
   const info = companies[id];
   if (!info) return;
