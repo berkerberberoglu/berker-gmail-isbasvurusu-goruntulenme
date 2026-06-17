@@ -55,10 +55,12 @@
   .tag.interview { background: #fbbf2420; color: #fcd34d; font-weight:800; }
   .tag.script { background: #7c3aed20; color: #c4b5fd; }
   .card-bottom { display: flex; align-items: center; justify-content: space-between; margin-top: 8px; }
-  .status-select { background: #0f172a; border: 1px solid #334155; color: #94a3b8; font-size: 10px; padding: 4px 7px; border-radius: 5px; cursor: pointer; outline: none; }
-  .status-select.status-incelenecek { border-color: #f59e0b; color: #f59e0b; }
-  .status-select.status-basvuruldu { border-color: #22c55e; color: #22c55e; }
-  .status-select.status-ilgisiz { border-color: #ef4444; color: #ef4444; }
+  .status-btns { display: flex; gap: 6px; }
+  .status-btn { background: #1e293b; border: 1px solid #334155; border-radius: 8px; width: 36px; height: 36px; font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.15s, border-color 0.15s; }
+  .status-btn:active { transform: scale(0.93); }
+  .status-btn.active-incelenecek { background: #f59e0b22; border-color: #f59e0b; }
+  .status-btn.active-basvuruldu { background: #22c55e22; border-color: #22c55e; }
+  .status-btn.active-ilgisiz { background: #ef444422; border-color: #ef4444; }
   .view-btn { font-size: 11px; color: #60a5fa; text-decoration: none; font-weight: 600; }
   .fit { font-size: 12px; }
   .empty { text-align: center; color: #475569; padding: 40px 0; font-size: 13px; }
@@ -1150,12 +1152,11 @@ function buildCard(j) {
     </div>
     <div class="card-bottom">
       <a class="view-btn" href="${j.url}">Görüntüle →</a>
-      <select class="status-select status-${status}"
-        onchange="setStatus(${j.id},this.value);this.className='status-select status-'+this.value">
-        <option value="incelenecek" ${status==='incelenecek'?'selected':''}>İncelenecek</option>
-        <option value="basvuruldu" ${status==='basvuruldu'?'selected':''}>Başvuruldu</option>
-        <option value="ilgisiz" ${status==='ilgisiz'?'selected':''}>İlgisiz</option>
-      </select>
+      <div class="status-btns">
+        <button class="status-btn ${status==='incelenecek'?'active-incelenecek':''}" onclick="setStatus(${j.id},'incelenecek');renderJobs()" title="İncelenecek">⭐</button>
+        <button class="status-btn ${status==='basvuruldu'?'active-basvuruldu':''}" onclick="setStatus(${j.id},'basvuruldu');renderJobs()" title="Başvuruldu">✅</button>
+        <button class="status-btn ${status==='ilgisiz'?'active-ilgisiz':''}" onclick="setStatus(${j.id},'ilgisiz');renderJobs()" title="İlgisiz">❌</button>
+      </div>
     </div>
   `;
   return d;
