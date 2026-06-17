@@ -138,7 +138,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">30</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">31</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -157,7 +157,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">4</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">30</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">31</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -301,6 +301,16 @@
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
         <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">NGAMING</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvurudan hemen sonra görüntüledi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">17 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Apollo</td>
+          <td style="padding:6px 4px;color:#94a3b8">2. kez görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">16 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">n11</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
           <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">16 Haz</td>
@@ -422,7 +432,9 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
-          <strong>12-16 Haziran:</strong> n11 (16 Haz) · Jolly Tur · Enterprise Türkiye · Pandastic Studio · Boyner Büyük Mağazacılık · Hype · Cityberry® Travel Technologies · Groupe SEB · QNB Türkiye (5. kez ⚠️) · ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
+          <strong>17 Haziran:</strong> n11 (2. ilan) · Hepsiburada (NASDAQ:HEPS, 2. ⚠️) · Beox · Kordsa · MediaMarkt Turkey<br><br>
+          <strong>16 Haziran:</strong> Migros Ticaret · ING Türkiye (5. ⚠️) · NGAMING · Crs Soft · QNB Türkiye (6. kez ⚠️) · H&M (2. ⚠️) · Sigortam.net (2. ⚠️) · CRIF Türkiye · Sütaş Grubu (2. ⚠️) · Rebul Holding · Tat Gıda · <strike>CHERY</strike> (RED) · n11 · Jolly Tur · Enterprise Türkiye · Pandastic Studio · Boyner · Hype · Cityberry® · Groupe SEB · QNB (5. ⚠️)<br><br>
+          <strong>12 Haziran:</strong> ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
           <strong>10-11 Haziran:</strong> FLO Group (Ürün Uzmanı) · ING Türkiye (4. - Business Banking-Digital Marketing, Payment and Digital Tribe Lead) · Tera Bank · Misli · ASICS · Alshaya Group Türkiye · Saat ve Saat · Gratis (2.) · Ace Games · Rossmann Türkiye · Bupa Türkiye · Bug.AI · Jobgether · Adecco · Alternatif Bank · Migros Ticaret (2.) · Hayat · Tarfin · Lucida AI · DenizBank · Miele · Redington Turkey · Beymen Group (2.) · MoneyPay · Sütaş Grubu · ASUS · Nobel İlaç A.Ş<br><br>
           <strong>7-8 Haziran:</strong> idefix · ING Türkiye (3.) · Pazarama (Sr Campaign Mgmt Specialist)<br><br>
           <strong>5-6 Haziran:</strong> QNB Türkiye (4.) · Pine Games · Setur (Kategori Uzmanı) · Jollify Games (Sr UA Manager) · n11 · TAV · Hepsiburada · ING (2.) · Skechers · Beymen · Gratis · ZÜBER<br><br>
@@ -438,10 +450,19 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (30 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (31 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">CHERY</div>
+            <div class="rt-pos">Dealer Network Specialist</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected</div>
+          </td>
+          <td class="rt-date">16 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -773,7 +794,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 16 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 17 Haziran 2026 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
