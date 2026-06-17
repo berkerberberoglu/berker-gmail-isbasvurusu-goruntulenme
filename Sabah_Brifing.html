@@ -138,7 +138,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">31</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">33</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -157,7 +157,7 @@
 <div class="main-tabs">
   <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">4</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">31</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">33</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -450,10 +450,28 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (31 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (33 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Midas — Growth Strategy</div>
+            <div class="rt-pos">Growth Strategy Pozisyonu — doga.dogan@getmidas.com</div>
+            <div class="rt-reason">"Farklı bir aday ile ilerlemeye karar verdik." — Talent & Culture, Midas</div>
+          </td>
+          <td class="rt-date">17 Haz</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Midas — Pozisyon (Lever)</div>
+            <div class="rt-pos">Pozisyon — no-reply@hire.lever.co</div>
+            <div class="rt-reason">"Başvurunu şu an için olumlu değerlendiremeyeceğimizi bildirmek isteriz." — Talent & Culture, Midas</div>
+          </td>
+          <td class="rt-date">17 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
