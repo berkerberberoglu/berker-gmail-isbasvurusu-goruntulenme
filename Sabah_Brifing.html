@@ -138,7 +138,7 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">34</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">35</div><div class="stat-label">Toplam Red (7 gün)</div></div>
   <div class="stat green"><div class="stat-num">30+</div><div class="stat-label">Toplam Başvuru</div></div>
   <div class="stat blue"><div class="stat-num">63</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
@@ -155,9 +155,9 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">4</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">5</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">34</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">35</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -228,7 +228,7 @@
     <div class="interview-row" id="row-yemeksepeti">
       <div>
         <div class="ir-date">17 Haz Çar · 14:00 GMT+3</div>
-        <span class="countdown-chip" style="background:#ef444430;color:#ef4444">🔥 YARIN!</span>
+        <span class="countdown-chip" style="background:#22c55e30;color:#22c55e">📅 DÜN GERÇEKLEŞTİ</span>
       </div>
       <div class="ir-info">
         <div class="ir-company">Yemeksepeti</div>
@@ -248,6 +248,15 @@
   <!-- DİĞER AKSİYONLAR -->
   <div class="section">
     <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
+
+    <div class="card urgent" id="aksiyon-publicis">
+      <div class="card-title">Publicis Groupe — Director of Growth Marketing 🌟</div>
+      <div class="card-sub">connect@publicisgroupecareerplus.com · Rae Ratna · 17 Haziran 2026</div>
+      <div class="card-detail">Recruiter'dan gelen teklif: "Director of Growth Marketing" seviyesinde bir rol için kısa görüşme talebi. Bu hafta veya gelecek hafta uygun mu diye soruyor.</div>
+      <span class="tag green">Recruiter Teklifi</span>
+      <span class="tag yellow">Yanıt Gerekli</span><br>
+      <button onclick="doneAksiyon('publicis')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Yanıtladım</button>
+    </div>
 
     <div class="card urgent" id="aksiyon-n11">
       <div class="card-title">n11 — Product Owner 🔥</div>
@@ -432,7 +441,8 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
-          <strong>17 Haziran:</strong> n11 (2. ilan) · Hepsiburada (NASDAQ:HEPS, 2. ⚠️) · Beox · Kordsa · MediaMarkt Turkey<br><br>
+          <strong>18 Haziran:</strong> (yeni alarm: Mars Athletic Club · MediaMarkt Marketplace · Trendyol Go · KOBIL)<br><br>
+          <strong>17 Haziran:</strong> n11 (2. ilan) · Hepsiburada (NASDAQ:HEPS, 2. ⚠️) · Beox · Kordsa · MediaMarkt Turkey · Skechers Türkiye · Hepsiburada (3. ⚠️) · Flalingo (Influencer Mktg)<br><br>
           <strong>16 Haziran:</strong> Migros Ticaret · ING Türkiye (5. ⚠️) · NGAMING · Crs Soft · QNB Türkiye (6. kez ⚠️) · H&M (2. ⚠️) · Sigortam.net (2. ⚠️) · CRIF Türkiye · Sütaş Grubu (2. ⚠️) · Rebul Holding · Tat Gıda · <strike>CHERY</strike> (RED) · n11 · Jolly Tur · Enterprise Türkiye · Pandastic Studio · Boyner · Hype · Cityberry® · Groupe SEB · QNB (5. ⚠️)<br><br>
           <strong>12 Haziran:</strong> ColendiBank · Kuzeyden İçecek (Brand Manager)<br><br>
           <strong>10-11 Haziran:</strong> FLO Group (Ürün Uzmanı) · ING Türkiye (4. - Business Banking-Digital Marketing, Payment and Digital Tribe Lead) · Tera Bank · Misli · ASICS · Alshaya Group Türkiye · Saat ve Saat · Gratis (2.) · Ace Games · Rossmann Türkiye · Bupa Türkiye · Bug.AI · Jobgether · Adecco · Alternatif Bank · Migros Ticaret (2.) · Hayat · Tarfin · Lucida AI · DenizBank · Miele · Redington Turkey · Beymen Group (2.) · MoneyPay · Sütaş Grubu · ASUS · Nobel İlaç A.Ş<br><br>
@@ -450,10 +460,19 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (34 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (35 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Trendyol</div>
+            <div class="rt-pos">Global Payments Professionals</div>
+            <div class="rt-reason">"We will not be moving forward with your application." — no-reply@hire.lever.co</div>
+          </td>
+          <td class="rt-date">18 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -821,7 +840,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 17 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 18 Haziran 2026 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
