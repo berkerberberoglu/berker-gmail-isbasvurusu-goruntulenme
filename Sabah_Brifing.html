@@ -138,9 +138,9 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">45</div><div class="stat-label">Toplam Red (7 gün)</div></div>
-  <div class="stat green"><div class="stat-num">50+</div><div class="stat-label">Toplam Başvuru</div></div>
-  <div class="stat blue"><div class="stat-num">74</div><div class="stat-label">Profil Görüntüleme</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">46</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat green"><div class="stat-num">60+</div><div class="stat-label">Toplam Başvuru</div></div>
+  <div class="stat blue"><div class="stat-num">77</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
 </div>
 
@@ -155,9 +155,9 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">8</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">9</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">43</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">46</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -268,6 +268,17 @@
   <div class="section">
     <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
 
+    <div class="card urgent" id="aksiyon-micro1">
+      <div class="card-title">Crossing Hurdles / Micro1 — Growth Partnerships Lead 🌟 RECRUITER TEKLİFİ</div>
+      <div class="card-sub">notifications@ceipalmail.com · Micro1 Recruiting · 28 Haziran 2026</div>
+      <div class="card-detail">Recruiter maili geldi: Growth Partnerships Lead pozisyonu için davet. Full-time, Remote. "Apply ASAP — reviewed on a rolling basis." LinkedIn üzerinden başvur, başvurular sürekli değerlendiriliyor.</div>
+      <span class="tag green">Recruiter Teklifi</span>
+      <span class="tag orange">ASAP Başvur</span>
+      <span class="tag remote">Remote · Full-time</span><br>
+      <a class="action-btn meet" href="https://www.linkedin.com/jobs/view/4431489131/" style="background:#22c55e">Hemen Başvur →</a>
+      <button onclick="doneAksiyon('micro1')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Başvuruldu</button>
+    </div>
+
     <div class="card urgent" id="aksiyon-pantum">
       <div class="card-title">Pantum — Business Development Manager ⚠️ BAŞVURU TAMAMLANMADI</div>
       <div class="card-sub">jobs-noreply@linkedin.com · 25 Haziran 2026 20:34</div>
@@ -348,6 +359,21 @@
 
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Hornpiper</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">29 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Adinteraction</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Performance Marketing Executive)</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">28 Haz</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">FLORMAR</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Senior Category Manager)</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">27 Haz</td>
+        </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Fresha</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Business Development Manager)</td>
@@ -535,6 +561,8 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
+          <strong>28 Haziran:</strong> helo! (Business Development &amp; Partnerships) · CHERY (Product Supervisor) · Pulse Games (Marketing Manager) · 13Brave Media (New Business Manager) · Abdi Ibrahim Pharmaceuticals (Product Manager/Senior PM - Dermatology) · MoneyPay (Card Business Manager) · Avansas.com (B2B Ticari Büyüme Müdürü) · Kopaş Kozmetik (Ticari Pazarlama Uzmanı) · Dilexa (Brand Manager) · madduck (Junior ASA &amp; ASO Specialist) · Talentown IT (İş Zekası Uzmanı) · OYAK Maden Metalürji (Stratejik Planlama ve Sürdürülebilirlik Uzmanı) · n11 (Reporting &amp; Analysis Assistant Specialist) · OWA AI (App Growth Specialist - Remote) · Colin's (Ürün Yönetimi Kıdemli Uzmanı) · Yapı Kredi (Dijital Yatırım Ürünleri Uzmanı) · FLORMAR (International Sales &amp; Business Development Manager ⚠️2.) · Hepsiburada (Product Analyst ⚠️2.) · Agito Software &amp; Consulting (Business Analyst) · Kaleseramik (Satış ve Pazarlama Müdürü) · Sanipak (PRODUCT MANAGER) · Sanipak (SALES OPERATIONS EXECUTIVE ⚠️2.) · Gini Talent (Product Owner - Agentic AI) · GİZLİ (Asistant Brand Manager) · Randstad Türkiye (Pazarlama Operasyon Müdürü) · Carex Sweden (Brand Manager) · Kavaklıdere Şirketler Grubu (Bira Kategori Yöneticisi) · DURU DOĞAL HAYAT VE SAĞLIK (İş Geliştirme, Etkinlik Ve İş Birlikleri Müdürü) · Crossing Hurdles (Partnerships Manager - Remote ⭐⭐⭐⭐) · Tchibo Türkiye (Senior Purchasing Specialist) · DIGIVEGA® (Brand Strategist)<br><br>
+          <strong>27 Haziran:</strong> FLORMAR (Senior Category Manager) · Hepsiburada (Senior Performance Marketing Specialist) · Şok Marketler (Büyüme ve Müşteri Sadakati Yöneticisi) · Doğanay (Category Manager) · PayTR (Kıdemli Dijital Pazarlama Uzmanı) · CarrefourSA (Dijital Pazarlama Yöneticisi) · Adinteraction (Performance Marketing Executive) · Sipay (Genel Başvuru) · Toyota Türkiye (LCV Marketing Communication Specialist) · Migros Ticaret (Kıdemli Pazarlama Uzmanı ⚠️2.) · Migros Ticaret (Marka Yönetimi Uzman Yardımcısı ⚠️2.) · Demirören Medya (Dijital Medya Ürün Yöneticisi) · Xiaomi (Retail KA Manager) · Kastamonu Entegre (Trade Marketing Specialist) · Transmed (Category Manager) · Gizli Şirket (Ticari Pazarlama Uzmanı) · A101 (Veri Bilimi Uzmanı) · LC Waikiki (E-Ticaret Bütçe ve Raporlama Uzmanı) · ReklamStore (Advertiser Account Manager) · Odeabank (CRM Senior Specialist) · Turkcell (Wholesale Product &amp; Market Dev. Manager) · GİZLİ (CRM Analytics Specialist) · Freesia LLC (Ecommerce Manager - Remote)<br><br>
           <strong>26 Haziran:</strong> Jolly Tur (Trade Marketing Executive) · Hepsiburada (Marketplace Sales Executive | Supermarket — ❌ red geldi aynı gün)<br><br>
           <strong>25 Haziran:</strong> Detay Gıda (Pazarlama Sorumlusu) · AVOYA (Trade Marketing Manager) · Enterprise Türkiye (Pazarlama Yöneticisi CRM) · OME Marketing (Growth Marketer) · Zade Vital (Kanal Geliştirme ve Ticari Paz. Yön.) · Fulser Kozmetik (Pazarlama Uzmanı) · Hopi (Merchant Success Mgmt Manager) · Spindora (Growth Partner) · ebebek (Dijital Performans Paz. Uzmanı) · Rixos Hotels (Marketing Manager) · FuzulEv (Pazarlama İletişim Uzmanı) · Migros Ticaret (Marka ve Medya Satın Alma Bölüm Sor.) · Sneaks Up (Jr. Digital Marketing Specialist) · Circle9 Agency (Partnerships &amp; Business Dev. Manager) · Jotform (Growth Manager) · FLORMAR (Trade Marketing Manager) · Fresha (Business Development Manager ⭐⭐⭐⭐) · Logo Yazılım (Pazarlama Analitiği Yöneticisi) · QNB Sigorta (Customer Analytics, CRM and Segment Mgmt Manager) · ING Türkiye (Digital Marketing Expert ⚠️tekrar) · idefix (Kategori Uzmanı/Yöneticisi ⚠️3.) · Migros Ticaret (Elektrikli ve Elektronik Ür. Paz. Yön. ⚠️2.) · HSBC (Business Management Manager) · Türkiye Finans (İş Analisti) · Aktif Bank (PASSO E-Ticaret Op. Uzm.) · Smile Hair Clinic (Brand Manager) · Marmara Döviz (Kıdemli Paz. ve İş Geliştirme Uzm.) · Engin Grup (Brand Manager) · KoçZer (Corporate Products Category Specialist/Lead) · Gizli Şirket (Kıdemli Dijital Paz. Uzm.) · Gizli Şirket (Kıdemli Marketplace/Online Kanallar Uzm.)<br><br>
           <strong>24 Haziran:</strong> Alshaya Group Avrasya (Starbucks CRM Specialist) · n11 (Strategy &amp; Corporate Dev. Supervisor ⚠️2.) · n11 (Kategori Uzmanı ⚠️3.) · JDE Peet's (Brand Manager) · Borusan Otomotiv (Portföy Geliştirme ve Satış Dan.) · Fairpay (Sr Product Owner) · Kinetic Business Solutions (Product Manager) · Storck (Area Sales Executive) · Memorial Healthcare Group (Marketing Analyst) · idefix (Ticari Strateji ve Büyüme Müdürü ⚠️2.) · Token Finansal Teknolojiler (Lead - Strategy &amp; Business Dev.) · ESARJ (PMO and Performance Process Lead ⚠️2.) · Gizli Şirket (Marketing Comm. Specialist) · NielsenIQ (Client Solutions Specialist, SmartRecruiters — ❌ red geldi)<br><br>
@@ -560,10 +588,19 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (45 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (46 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Fresha</div>
+            <div class="rt-pos">Business Development Manager (Istanbul)</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected (28 Haz)</div>
+          </td>
+          <td class="rt-date">28 Haz</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -1030,7 +1067,7 @@
   </div>
 </div>
 
-<div class="footer">Son güncelleme: 26 Haziran 2026 · Claude tarafından oluşturuldu</div>
+<div class="footer">Son güncelleme: 29 Haziran 2026 · Claude tarafından oluşturuldu</div>
 
 <script>
 function showTab(name, el) {
