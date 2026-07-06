@@ -138,9 +138,9 @@
 <div class="stats-row">
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
-  <div class="stat red"><div class="stat-num" id="redCount">55</div><div class="stat-label">Toplam Red (7 gün)</div></div>
-  <div class="stat green"><div class="stat-num">133+</div><div class="stat-label">Toplam Başvuru</div></div>
-  <div class="stat blue"><div class="stat-num">89</div><div class="stat-label">Profil Görüntüleme</div></div>
+  <div class="stat red"><div class="stat-num" id="redCount">58</div><div class="stat-label">Toplam Red (7 gün)</div></div>
+  <div class="stat green"><div class="stat-num">156+</div><div class="stat-label">Toplam Başvuru</div></div>
+  <div class="stat blue"><div class="stat-num">94</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
 </div>
 
@@ -155,9 +155,9 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">10</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">11</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">55</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">58</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -268,6 +268,16 @@
   <div class="section">
     <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
 
+    <div class="card urgent" id="aksiyon-bundle">
+      <div class="card-title">Bundle — Product Manager 🌟 ÖNE ÇIKAN ADAY — FORM DOLDUR</div>
+      <div class="card-sub">enes@bundlenews.co · Enes Danış (Product Director & Co-Founder) · 5 Temmuz 2026 08:44</div>
+      <div class="card-detail">"Seni öne çıkan adaylarımızdan biri olarak değerlendiriyoruz." Olası bir görüşme öncesinde doldurman istenen bir form var. Aynı gün (08:33) başvurun Bundle tarafından da görüntülenmiş — sıcak bir bağlantı.</div>
+      <span class="tag green">Öne Çıkan Aday</span>
+      <span class="tag yellow">Form Bekliyor</span><br>
+      <a class="action-btn meet" href="https://forms.gle/jHYrd2xKKiKvYa196" target="_blank" style="background:#22c55e">Formu Doldur →</a>
+      <button onclick="doneAksiyon('bundle')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
+    </div>
+
     <div class="card urgent" id="aksiyon-onoai">
       <div class="card-title">Ono AI Based HR Platform — Product Owner ⚠️ BAŞVURU TAMAMLANMADI</div>
       <div class="card-sub">jobs-noreply@linkedin.com · 3 Temmuz 2026 22:09</div>
@@ -369,6 +379,31 @@
 
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">BrandZone</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Product Owner)</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">BEAUTE Cosmetics</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Sidrex® Türkiye</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — 1 gün önce başvurulmuştu, hızlı geri dönüş</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Fulser Kozmetik</td>
+          <td style="padding:6px 4px;color:#94a3b8">2. kez görüntülendi 👀 (Pazarlama Uzmanı)</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Bundle</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Product Manager) — aynı gün recruiter'dan kişisel mail geldi 🌟</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">5 Tem</td>
+        </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Synevo Türkiye</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
@@ -651,7 +686,8 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
-          <strong>4 Temmuz:</strong> Paxie Games (Growth Specialist) · BrandZone (Product Owner — Competitor &amp; E-commerce Analytics)<br><br>
+          <strong>5 Temmuz:</strong> Enpara.com · Paywall · Setur · Forte Tourism · Kiğılı · Decathlon · Papa Johns Türkiye · Hype · Sidrex® Türkiye (⚠️ ertesi gün görüntülendi) · DHL eCommerce Türkiye · Aras Kargo · Volkswagen Doğuş Finansman (vdf) · Juuli · Gözen Air Services · App Genie · FELLAS FOODS (⚠️2.) · Blueclip · Paxie Games (⚠️2.) · ING Türkiye (⚠️tekrar) · Marti Technologies · Supplementler.com · Migros Ticaret (⚠️tekrar) — ayrıca <strong>Bundle</strong> için 🌟 öne çıkan aday bildirimi ve recruiter'dan kişisel mail geldi (önceki bir başvuru üzerinden) · Growth Specialist - Grand Games (⚠️ hatırlatma — henüz başvurulmadı)<br><br>
+          <strong>4 Temmuz:</strong> Paxie Games (Growth Specialist) · BrandZone (Product Owner — Competitor &amp; E-commerce Analytics) · A101 Yeni Mağazacılık (⚠️2. pozisyon) · QNB Türkiye (⚠️tekrar)<br><br>
           <strong>3 Temmuz:</strong> Ono AI Based HR Platform (Product Owner ⚠️başvuru hata verdi, tamamlanması gerekiyor) · A101 Yeni Mağazacılık (Dijital Ürün Uzmanı) · Tatilsepeti (İş Geliştirme ve Partnerlikler Uzmanı) · CarrefourSA (Pazarlama İletişimi Kıdemli Uzmanı) · Octet Türkiye (Satış Geliştirme Uzmanı) · MSC Mediterranean Shipping Company (Hava Kargo Pazarlama Yönetmeni) · Gamegos (Marketing Specialist - Games) · Beox (Commercial Growth &amp; Product Lead) · Synevo Türkiye (Senior CRM Specialist/Executive) · TikTok (Partner Growth &amp; Incubation Manager ⚠️tekrar) · Jolly Tur (Performance Marketing Executive) · ING Türkiye (Pricing Manager – Retail Banking ⚠️tekrar) · n11 (Automotive Category Specialist ⚠️eski işveren) · Solution House (Senior Brand Manager) · Sony (Marketing Services Associate Specialist) · Akakçe (Loyalty Manager) · ASUS (Channel Marketing Specialist) · LHH (Marketing Specialist) · Alshaya Group Avrasya (CRM Specialist / Victoria's Secret) · Zes (Ticari Pazarlama Yöneticisi) · Decathlon (E-commerce Category Manager) · Ülker (Trade Marketing Executive) · Taboola (Customer Success Lead)<br><br>
           <strong>2 Temmuz (öğleden sonra):</strong> FLORMAR (Trade Marketing Assistant Manager) · inavitas (Senior Product Marketing Specialist) · getirfinans (Customer Experience Executive) · Dreame Technology (Digital Marketing Specialist)<br><br>
           <strong>1 Temmuz:</strong> n11 (Commercial Growth Manager) · Toyota Türkiye Pazarlama ve Satış (Customer Analysis Specialist) · Mavi (Product Marketing Supervisor) · Watsons Turkey (CRM Campaign Specialist) · Sneaks Up (Product Marketing Activation Specialist ⚠️2.) · Inbound Marketing Agency (Senior Marketing Analytics Consultant) · Hepsiburada (Marketplace Sales Manager | Home&amp;Garden ⚠️tekrar) · Multinet | Up (Experience Development Executive) · Çelik Motor (Business Development &amp; Reporting Specialist / Senior Specialist)<br><br>
@@ -675,7 +711,7 @@
           <strong>4 Haziran:</strong> Mavi · Migros · OPPO · BtcTurk · getirfinans · ING (1.) · Sigortam.net<br>
           <em>Kurumsal platform:</em> Peak · Yemeksepeti · Scorp · Amazon · Obilet · Siemens ✅
         </div>
-        <span class="tag green">Toplam 88+ başvuru (son 7 gün)</span>
+        <span class="tag green">Toplam 111+ başvuru (son 7 gün)</span>
       </div>
     </div>
   </div>
@@ -684,10 +720,37 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (55 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (58 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Solution House</div>
+            <div class="rt-pos">Senior Brand Manager</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected, "başvurunuz" gibi görünen gizli red şablonu (6 Tem)</div>
+          </td>
+          <td class="rt-date">6 Tem</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Taboola</div>
+            <div class="rt-pos">Customer Success Lead</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected, gizli red şablonu (6 Tem)</div>
+          </td>
+          <td class="rt-date">6 Tem</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Meta Global Solutions UK</div>
+            <div class="rt-pos">Partnerships Specialist</div>
+            <div class="rt-reason">LinkedIn red bildirimi — application_rejected, gizli red şablonu. 2 kez geldi (4 Tem ve 5 Tem)</div>
+          </td>
+          <td class="rt-date">5 Tem</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
