@@ -139,8 +139,8 @@
   <div class="stat red"><div class="stat-num">4</div><div class="stat-label">Mülakat Bu Hafta</div></div>
   <div class="stat yellow"><div class="stat-num">1</div><div class="stat-label">Wingfinder Bekliyor</div></div>
   <div class="stat red"><div class="stat-num" id="redCount">58</div><div class="stat-label">Toplam Red (7 gün)</div></div>
-  <div class="stat green"><div class="stat-num">156+</div><div class="stat-label">Toplam Başvuru</div></div>
-  <div class="stat blue"><div class="stat-num">94</div><div class="stat-label">Profil Görüntüleme</div></div>
+  <div class="stat green"><div class="stat-num">191+</div><div class="stat-label">Toplam Başvuru</div></div>
+  <div class="stat blue"><div class="stat-num">101</div><div class="stat-label">Profil Görüntüleme</div></div>
   <div class="stat purple"><div class="stat-num">12</div><div class="stat-label">Yeni CV İlgisi</div></div>
 </div>
 
@@ -155,7 +155,7 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">11</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">12</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
   <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">58</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
@@ -269,13 +269,23 @@
     <div class="section-title"><span>⚡</span> Diğer Bekleyen Aksiyonlar</div>
 
     <div class="card urgent" id="aksiyon-bundle">
-      <div class="card-title">Bundle — Product Manager 🌟 ÖNE ÇIKAN ADAY — FORM DOLDUR</div>
-      <div class="card-sub">enes@bundlenews.co · Enes Danış (Product Director & Co-Founder) · 5 Temmuz 2026 08:44</div>
-      <div class="card-detail">"Seni öne çıkan adaylarımızdan biri olarak değerlendiriyoruz." Olası bir görüşme öncesinde doldurman istenen bir form var. Aynı gün (08:33) başvurun Bundle tarafından da görüntülenmiş — sıcak bir bağlantı.</div>
+      <div class="card-title">Bundle — Product Manager 🌟 ÖNE ÇIKAN ADAY — YANIT BEKLENİYOR</div>
+      <div class="card-sub">enes@bundlenews.co · Enes Danış (Product Director & Co-Founder) · Son yanıt: 6 Temmuz 2026 11:17</div>
+      <div class="card-detail">Form dolduruldu ve Enes Bey'e "görüşme için uygun olduğunuz bir zamanı paylaşırsanız memnuniyetle ayarlarım" şeklinde cevap gönderildi (6 Tem). Şimdi Enes Bey'den görüşme zamanı önerisi bekleniyor — LinkedIn üzerinden ekstra takip gerekmiyor, sadece cevap gelirse hızlı dönülmeli.</div>
       <span class="tag green">Öne Çıkan Aday</span>
-      <span class="tag yellow">Form Bekliyor</span><br>
-      <a class="action-btn meet" href="https://forms.gle/jHYrd2xKKiKvYa196" target="_blank" style="background:#22c55e">Formu Doldur →</a>
-      <button onclick="doneAksiyon('bundle')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
+      <span class="tag blue">Form Dolduruldu</span>
+      <span class="tag yellow">Enes'ten Yanıt Bekleniyor</span>
+      <button onclick="doneAksiyon('bundle')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Görüşme Ayarlandı</button>
+    </div>
+
+    <div class="card urgent" id="aksiyon-codeway">
+      <div class="card-title">Codeway — Rıza Onayı (GDPR Consent) ⚠️ 30 GÜN İÇİNDE DOLDUR</div>
+      <div class="card-sub">no-reply@ashbyhq.com · 7 Temmuz 2026</div>
+      <div class="card-detail">Codeway, aday takip sistemini Lever'dan Ashby'ye taşımış. Başvuru sürecinin devam etmesi için sadece veri işleme rızası (GDPR consent) onaylanması isteniyor. 30 gün içinde onaylanmazsa kayıtların silinebileceği belirtiliyor (son tarih ~6 Ağustos 2026).</div>
+      <span class="tag yellow">Rıza Onayı Gerekli</span>
+      <span class="tag orange">30 Gün İçinde</span><br>
+      <a class="action-btn meet" href="https://you.ashbyhq.com/codeway/survey/85dbb06a-7723-4f8e-9f49-01b040e6a466" target="_blank" style="background:#22c55e">Rızayı Onayla →</a>
+      <button onclick="doneAksiyon('codeway')" style="margin-top:8px;background:#22c55e22;border:1px solid #22c55e55;color:#22c55e;padding:6px 14px;border-radius:6px;font-size:12px;cursor:pointer;display:block">✓ Tamamlandı</button>
     </div>
 
     <div class="card urgent" id="aksiyon-onoai">
@@ -379,6 +389,41 @@
 
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">ZENDÖNER</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">7 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Fomo Games</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (2. kez)</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">7 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">ING Türkiye</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (⚠️ birden çok kez başvurulan şirket)</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">7 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#fbbf24">Velavit Türkiye</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — aynı gün başvurulmuştu, hızlı geri dönüş</td>
+          <td style="padding:6px 4px;color:#fbbf24;white-space:nowrap;font-weight:700">7 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">inavitas</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">OLY Digital</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — aynı gün başvurulmuştu, aynı gün görüntülendi</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">Gözen Air Services</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — ertesi gün görüntülendi</td>
+          <td style="padding:6px 4px;color:#4ade80;white-space:nowrap;font-weight:700">6 Tem</td>
+        </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#f1f5f9">BrandZone</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Product Owner)</td>
@@ -686,6 +731,8 @@
       <div class="section-title"><span>📨</span> Son Günlerin Başvuruları</div>
       <div class="card info">
         <div class="card-detail">
+          <strong>7 Temmuz:</strong> BİM Birleşik Mağazalar A.Ş · Boyner Büyük Mağazacılık<br><br>
+          <strong>6 Temmuz:</strong> PlayableX · NativeMinds · GYNAVITA Türkiye · BENSON &amp; PARTNERS - IESF · Ülker · Ennfluencer · Pazarama · Randstad Türkiye · Velavit Türkiye (⚠️ertesi gün tekrar görüntülendi) · Burak Aktürk Productions · YARGICI · Fomo Games (⚠️2.) · getirfinans (⚠️tekrar) · Gorilla Energy Drink · ORZAX · FLO Mağazacılık · CreatorDen · MUDO · Pandora · Kuveyt Türk Katılım Bankası · Oak Technology · MediaMarkt Turkey · METRO Türkiye (kendi ATS'inden de ayrı onay geldi) · Multinet | Up · ZENDÖNER · OLY Digital · Paxie Games (⚠️3.) — ayrıca Gratis, İmport Sanal Market, Orka Holding, Investtime, NEUROBIO ve ViewSonic'e (önceki gün önerilen ilanlar) başvuru gönderildi ⭐<br><br>
           <strong>5 Temmuz:</strong> Enpara.com · Paywall · Setur · Forte Tourism · Kiğılı · Decathlon · Papa Johns Türkiye · Hype · Sidrex® Türkiye (⚠️ ertesi gün görüntülendi) · DHL eCommerce Türkiye · Aras Kargo · Volkswagen Doğuş Finansman (vdf) · Juuli · Gözen Air Services · App Genie · FELLAS FOODS (⚠️2.) · Blueclip · Paxie Games (⚠️2.) · ING Türkiye (⚠️tekrar) · Marti Technologies · Supplementler.com · Migros Ticaret (⚠️tekrar) — ayrıca <strong>Bundle</strong> için 🌟 öne çıkan aday bildirimi ve recruiter'dan kişisel mail geldi (önceki bir başvuru üzerinden) · Growth Specialist - Grand Games (⚠️ hatırlatma — henüz başvurulmadı)<br><br>
           <strong>4 Temmuz:</strong> Paxie Games (Growth Specialist) · BrandZone (Product Owner — Competitor &amp; E-commerce Analytics) · A101 Yeni Mağazacılık (⚠️2. pozisyon) · QNB Türkiye (⚠️tekrar)<br><br>
           <strong>3 Temmuz:</strong> Ono AI Based HR Platform (Product Owner ⚠️başvuru hata verdi, tamamlanması gerekiyor) · A101 Yeni Mağazacılık (Dijital Ürün Uzmanı) · Tatilsepeti (İş Geliştirme ve Partnerlikler Uzmanı) · CarrefourSA (Pazarlama İletişimi Kıdemli Uzmanı) · Octet Türkiye (Satış Geliştirme Uzmanı) · MSC Mediterranean Shipping Company (Hava Kargo Pazarlama Yönetmeni) · Gamegos (Marketing Specialist - Games) · Beox (Commercial Growth &amp; Product Lead) · Synevo Türkiye (Senior CRM Specialist/Executive) · TikTok (Partner Growth &amp; Incubation Manager ⚠️tekrar) · Jolly Tur (Performance Marketing Executive) · ING Türkiye (Pricing Manager – Retail Banking ⚠️tekrar) · n11 (Automotive Category Specialist ⚠️eski işveren) · Solution House (Senior Brand Manager) · Sony (Marketing Services Associate Specialist) · Akakçe (Loyalty Manager) · ASUS (Channel Marketing Specialist) · LHH (Marketing Specialist) · Alshaya Group Avrasya (CRM Specialist / Victoria's Secret) · Zes (Ticari Pazarlama Yöneticisi) · Decathlon (E-commerce Category Manager) · Ülker (Trade Marketing Executive) · Taboola (Customer Success Lead)<br><br>
@@ -711,7 +758,7 @@
           <strong>4 Haziran:</strong> Mavi · Migros · OPPO · BtcTurk · getirfinans · ING (1.) · Sigortam.net<br>
           <em>Kurumsal platform:</em> Peak · Yemeksepeti · Scorp · Amazon · Obilet · Siemens ✅
         </div>
-        <span class="tag green">Toplam 111+ başvuru (son 7 gün)</span>
+        <span class="tag green">Toplam 146+ başvuru (son 7 gün)</span>
       </div>
     </div>
   </div>
