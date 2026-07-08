@@ -155,9 +155,9 @@
 
 <!-- ANA TABS -->
 <div class="main-tabs">
-  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">12</span></button>
+  <button class="main-tab active" onclick="showTab('aksiyon',this)">🎯 Aksiyon <span class="tab-count" id="cnt-aksiyon">13</span></button>
   <button class="main-tab" onclick="showTab('profil',this)">👁️ Profil</button>
-  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">58</span></button>
+  <button class="main-tab" onclick="showTab('redler',this)">❌ Redler <span class="tab-count" id="cnt-redler">60</span></button>
   <button class="main-tab done-tab" onclick="showTab('done',this)">✅ Tamamlanan <span class="tab-count done-tab">0</span></button>
 </div>
 
@@ -167,6 +167,25 @@
   <!-- MÜLAKAT KUTUSU -->
   <div class="interview-box">
     <div class="ib-title">🗓️ Bu Haftaki Mülakatlar</div>
+
+    <div class="interview-row" id="row-pazarama">
+      <div>
+        <div class="ir-date">9 Tem Per · 10:00–11:00</div>
+        <span class="countdown-chip">🔴 YARIN</span>
+      </div>
+      <div class="ir-info">
+        <div class="ir-company">Pazarama</div>
+        <div class="ir-pos">Campaign Management Specialist — Seda Özkan</div>
+        <div class="ir-btns">
+          <span class="ir-platform">Google Meet</span>
+          <a class="ir-btn meet" href="https://meet.google.com/yha-ogmw-vkd" target="_blank">Meet'e Katıl</a>
+          <button class="ir-btn done" onclick="markInterview('pazarama','done')">✓ Tamamlandı</button>
+          <button class="ir-btn waiting" onclick="markInterview('pazarama','waiting')">⏳ Haber Bekleniyor</button>
+        </div>
+        <span class="status-chip done-chip" id="pazarama-done">✓ Tamamlandı</span>
+        <span class="status-chip waiting-chip" id="pazarama-waiting">⏳ Haber Bekleniyor</span>
+      </div>
+    </div>
 
     <div class="interview-row" id="row-scorp">
       <div>
@@ -389,6 +408,46 @@
 
     <div class="card info">
       <table style="width:100%;border-collapse:collapse;font-size:12px;">
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">createanapi.com</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — aynı gün başvurulmuştu, çok hızlı geri dönüş</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">Paywall</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">Havas Group Turkey</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">İstanbul Marketing Group</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 — aynı gün başvurulmuştu, hızlı geri dönüş</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">ETHIC HR Consulting</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Digital Marketing Manager) — 7 Tem'de başvurulmuştu</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">helo!</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (2. kez, aynı gün) — Growth Specialist + Business Development & Partnerships başvuruları</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">Farmatek</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
+        <tr style="border-bottom:1px solid #334155">
+          <td style="padding:6px 4px;font-weight:600;color:#f87171">Inbound Marketing Agency</td>
+          <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀 (Senior Marketing Analytics Consultant) — 1 Tem'de başvurulmuştu</td>
+          <td style="padding:6px 4px;color:#f87171;white-space:nowrap;font-weight:700">8 Tem</td>
+        </tr>
         <tr style="border-bottom:1px solid #334155">
           <td style="padding:6px 4px;font-weight:600;color:#fbbf24">ZENDÖNER</td>
           <td style="padding:6px 4px;color:#94a3b8">Başvuru görüntülendi 👀</td>
@@ -767,10 +826,28 @@
 <!-- ===== REDLER PANELİ ===== -->
 <div class="tab-panel" id="panel-redler">
   <div class="section">
-    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (58 adet) — en yeni üstte</div>
+    <div class="section-title"><span>❌</span> Son 7 Günün Red Listesi (60 adet) — en yeni üstte</div>
 
     <div class="card red-card">
       <table class="red-table">
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">sahibinden.com</div>
+            <div class="rt-pos">Kıdemli Kurumsal Gelir ve Segment Yönetimi Uzmanı</div>
+            <div class="rt-reason">✅ Mülakat gerçekleşmişti (9 Haz, Zeynep Demıralp ile Teams) — sonrasında red geldi: "Değerlendirmelerimiz sonucunda üzülerek belirtiyoruz ki ... pozisyonuna başvuru sürecini olumlu noktalayamıyoruz." — yetenekkazanimi@sahibinden.com (8 Tem)</div>
+          </td>
+          <td class="rt-date">8 Tem</td>
+        </tr>
+        <tr>
+          <td>❌</td>
+          <td>
+            <div class="rt-company">Ticimax</div>
+            <div class="rt-pos">Product Manager</div>
+            <div class="rt-reason">"we have reviewed your application, and unfortunately we are not able to offer you a position at this time" — Sinem Göreci Özkan, Team Blue Ticimax (8 Tem)</div>
+          </td>
+          <td class="rt-date">8 Tem</td>
+        </tr>
         <tr>
           <td>❌</td>
           <td>
@@ -1380,7 +1457,7 @@ function markInterview(id, state) {
 }
 
 function applyInterviewStates() {
-  ['scorp', 'sahibinden', 'sahibinden2', 'yemeksepeti'].forEach(id => {
+  ['pazarama', 'scorp', 'sahibinden', 'sahibinden2', 'yemeksepeti'].forEach(id => {
     const state = INTERVIEW_STATES[id];
     if (state === 'done' || state === 'waiting') {
       const row = document.getElementById('row-' + id);
@@ -1398,6 +1475,7 @@ function updateDoneTabCount() {
 
 function moveToDoneTab(id, state) {
   const companies = {
+    pazarama: { name: 'Pazarama', pos: 'Campaign Management Specialist', date: '9 Tem 2026' },
     scorp: { name: 'Scorp', pos: 'Marketing Data Analyst', date: '8 Haz 2026' },
     sahibinden: { name: 'sahibinden.com', pos: 'Mülakat Daveti', date: '9 Haz 2026' },
     sahibinden2: { name: 'sahibinden.com — 2. Görüşme', pos: 'Tanışma · Kıdemli Kurumsal Gelir ve Segment Yönetimi Uzmanı', date: '11 Haz 2026' },
