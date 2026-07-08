@@ -1457,7 +1457,7 @@ function markInterview(id, state) {
 }
 
 function applyInterviewStates() {
-  ['pazarama', 'scorp', 'sahibinden', 'sahibinden2', 'yemeksepeti'].forEach(id => {
+  ['pazarama', 'scorp', 'sahibinden', 'sahibinden2', 'sahibinden3', 'yemeksepeti'].forEach(id => {
     const state = INTERVIEW_STATES[id];
     if (state === 'done' || state === 'waiting') {
       const row = document.getElementById('row-' + id);
@@ -1479,6 +1479,7 @@ function moveToDoneTab(id, state) {
     scorp: { name: 'Scorp', pos: 'Marketing Data Analyst', date: '8 Haz 2026' },
     sahibinden: { name: 'sahibinden.com', pos: 'Mülakat Daveti', date: '9 Haz 2026' },
     sahibinden2: { name: 'sahibinden.com — 2. Görüşme', pos: 'Tanışma · Kıdemli Kurumsal Gelir ve Segment Yönetimi Uzmanı', date: '11 Haz 2026' },
+    sahibinden3: { name: 'sahibinden.com — 3. Görüşme', pos: 'Kıdemli Fiyatlandırma Uzmanı', date: '22 Haz 2026' },
     yemeksepeti: { name: 'Yemeksepeti', pos: 'Marketing Campaigns Executive', date: '17 Haz 2026' }
   };
   const info = companies[id];
